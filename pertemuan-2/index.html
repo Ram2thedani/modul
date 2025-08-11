@@ -1,0 +1,194 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Modul Ajar: Memahami API untuk Kelas XI SMK PPLG</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="pertemuan-2"
+                  title="Modul Ajar: Memahami API untuk Kelas XI SMK PPLG"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Step 1: API" duration="0">
+        <p>Di dunia teknologi yang terus berkembang, istilah API sering kali muncul, terutama saat kita berbicara tentang pengembangan aplikasi atau integrasi antar sistem. Namun, apa sebenarnya yang dimaksud dengan API? Mengapa ia begitu penting, dan bagaimana cara kerjanya?</p>
+<h2 is-upgraded>1. Pengertian API</h2>
+<p>API merupakan singkatan dari <strong>Application Programming Interface</strong>, yang dalam bahasa Indonesia berarti <em>Antarmuka Pemrograman Aplikasi</em>.<br> Secara sederhana, API adalah sebuah <strong>jembatan</strong> yang memungkinkan dua aplikasi berbeda untuk berkomunikasi dan saling bertukar data.</p>
+<h3 is-upgraded>Pengertian Menurut Para Ahli</h3>
+<ol type="1">
+<li><strong>Roy Fielding (Arsitek REST)</strong>&#34;An API is a set of clearly defined methods of communication among various components.&#34;<br> Artinya, API adalah kumpulan metode yang terdefinisi dengan jelas untuk komunikasi antar komponen.</li>
+<li><strong>James Gosling (Pencipta Java)</strong>&#34;APIs are the libraries and tools that allow programmers to connect different pieces of software together.&#34;<br> Artinya, API adalah alat dan pustaka yang memungkinkan pengembang menghubungkan berbagai software.</li>
+<li><strong>Grady Booch (Ahli Arsitektur Software)</strong>&#34;An API represents the contract between different software components.&#34;<br> Artinya, API adalah kesepakatan komunikasi antara dua bagian perangkat lunak.</li>
+<li><strong>IBM Developer</strong>&#34;An API is a set of rules that define how applications or devices can connect to and communicate with each other.&#34;<br> API adalah seperangkat aturan agar aplikasi bisa terhubung dan berkomunikasi satu sama lain.</li>
+</ol>
+<h3 is-upgraded>Analogi Sederhana</h3>
+<p>Bayangkan kamu sedang makan di restoran.</p>
+<ul>
+<li>Kamu = <strong>Aplikasi pengguna</strong> (<em>frontend</em>)</li>
+<li>Koki = <strong>Server</strong> (<em>backend</em>)</li>
+<li>Pelayan = <strong>API</strong></li>
+</ul>
+<p>Pelayan (API) tidak perlu tahu cara memasak, tapi ia tahu bagaimana menyampaikan pesanan dan mengembalikan hasilnya.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Cara Kerja API" duration="0">
+        <p>API bekerja dengan cara mengirim <strong>permintaan (request)</strong> dan menerima <strong>balasan (response)</strong>.<br> Ketika suatu aplikasi membutuhkan data dari aplikasi lain, ia akan memanggil API, lalu API akan:</p>
+<ol type="1">
+<li>Menerima permintaan (biasanya lewat internet)</li>
+<li>Mencari data yang diminta di server</li>
+<li>Mengembalikan data ke aplikasi peminta</li>
+</ol>
+<p>Biasanya data dikirim dalam format <strong>JSON</strong> atau <strong>XML</strong>.</p>
+<h2 is-upgraded>Manfaat API</h2>
+<ul>
+<li><strong>Integrasi sistem</strong>: Menghubungkan aplikasi satu dengan yang lain.</li>
+<li><strong>Efisiensi waktu</strong>: Tidak perlu membangun semuanya dari nol.</li>
+<li><strong>Keamanan data</strong>: Bisa membatasi data yang diakses.</li>
+<li><strong>Pengembangan cepat</strong>: Menyediakan fungsi siap pakai.</li>
+</ul>
+<h2 is-upgraded>Contoh API di Kehidupan Sehari-hari</h2>
+<ul>
+<li><strong>Google Maps API</strong>: Menampilkan peta pada aplikasi ojek online.</li>
+<li><strong>Payment Gateway API</strong>: Memproses pembayaran di toko online.</li>
+<li><strong>Weather API</strong>: Menampilkan suhu dan prakiraan cuaca.</li>
+</ul>
+<h2 is-upgraded>Istilah Penting dalam API</h2>
+<ul>
+<li><strong>Endpoint</strong>: URL tujuan API yang akan dipanggil.</li>
+<li><strong>Method</strong>: Jenis permintaan (GET, POST, PUT, DELETE).</li>
+<li><strong>Response Code</strong>: Kode status hasil eksekusi API. <ul>
+<li>200 OK → Berhasil</li>
+<li>404 Not Found → Tidak ditemukan</li>
+<li>500 Internal Server Error → Error di server</li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Pengenalan Postman" duration="0">
+        <p><strong>Postman</strong> adalah aplikasi populer untuk menguji dan mengembangkan API.<br> Dengan Postman, kita bisa mengirim request dan melihat response tanpa menulis kode.</p>
+<h2 is-upgraded>Fungsi Utama Postman</h2>
+<ol type="1">
+<li>Mengirim berbagai jenis request HTTP (GET, POST, PUT, DELETE)</li>
+<li>Mengatur parameter, header, dan body</li>
+<li>Menyimpan koleksi API untuk pengujian berulang</li>
+<li>Melihat detail respons (status code, waktu, data)</li>
+<li>Mengotomatisasi pengujian API</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Cara Kerja dan Komponen Postman" duration="0">
+        <p>Postman mengirim request HTTP ke endpoint API dan menampilkan response.</p>
+<p><strong>Komponen Utama:</strong></p>
+<ul>
+<li><strong>Workspace</strong>: Area kerja untuk mengatur proyek.</li>
+<li><strong>Collection</strong>: Kumpulan request.</li>
+<li><strong>Environment</strong>: Variabel yang digunakan di banyak request.</li>
+<li><strong>Request</strong>: Permintaan tunggal.</li>
+<li><strong>Response</strong>: Balasan API.</li>
+</ul>
+<p><strong>Langkah Dasar Menggunakan Postman:</strong></p>
+<ol type="1">
+<li>Buka Postman dan buat request baru</li>
+<li>Pilih method (GET, POST, dll.)</li>
+<li>Masukkan URL endpoint API</li>
+<li>Atur parameter, header, atau body jika perlu</li>
+<li>Klik <strong>Send</strong></li>
+<li>Lihat response</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Istilah Penting di Postman" duration="0">
+        <ul>
+<li><strong>Method</strong>: Jenis permintaan HTTP</li>
+<li><strong>Endpoint</strong>: URL tujuan API</li>
+<li><strong>Params</strong>: Parameter query di URL</li>
+<li><strong>Headers</strong>: Metadata request</li>
+<li><strong>Body</strong>: Data yang dikirim pada POST/PUT</li>
+<li><strong>Response Code</strong>: Kode status</li>
+</ul>
+<p><strong>Header Penting:</strong></p>
+<ul>
+<li>Content-Type: application/json</li>
+<li>Accept: application/json</li>
+<li>Authorization: Bearer <code><token></code></li>
+<li>Cache-Control: no-cache</li>
+</ul>
+<p><strong>Jenis Parameter:</strong></p>
+<ul>
+<li>Path Parameter → <code>/users/{id}</code></li>
+<li>Query Parameter → <code>?page=2&limit=10</code></li>
+<li>Header Parameter → <code>X-Api-Key</code></li>
+<li>Body Parameter → Data di request body</li>
+</ul>
+<p><strong>Jenis Body:</strong></p>
+<ul>
+<li>application/json</li>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>binary</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6: Troubleshooting" duration="0">
+        <ul>
+<li><strong>401 Unauthorized</strong> → Token salah/kadaluarsa</li>
+<li><strong>404 Not Found</strong> → URL atau parameter salah</li>
+<li><strong>400 / 422 Validation Error</strong> → Data tidak sesuai format</li>
+<li><strong>500 Internal Server Error</strong> → Error di server</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 7: Latihan" duration="0">
+        <ol type="1">
+<li>GET list users dari <code>https://reqres.in/api/users?page=2</code></li>
+<li>GET single user dengan path param</li>
+<li>POST create user dengan body JSON</li>
+<li>PUT update user dengan body JSON</li>
+<li>Upload file ke <code>https://httpbin.org/post</code> dengan form-data</li>
+<li>Buat pre-request script untuk set header <code>X-Request-ID</code> secara acak</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
