@@ -37,10 +37,10 @@ Secara sederhana, API adalah sebuah **jembatan** yang memungkinkan dua aplikasi 
 
 #### Pengertian Menurut Para Ahli
 
-1. **Roy Fielding (Arsitek REST)**
+1. **Roy Fielding (Arsitek REST)**<br>
 
-   > "An API is a set of clearly defined methods of communication among various components."  
-   > Artinya, API adalah kumpulan metode yang terdefinisi dengan jelas untuk komunikasi antar komponen.
+   > "An API is a set of clearly defined methods of communication among various components." <br>
+   > Artinya, API adalah kumpulan metode yang terdefinisi dengan jelas untuk komunikasi antar komponen.<br>
 
 2. **James Gosling (Pencipta Java)**
 
