@@ -63,8 +63,8 @@ Bayangkan kamu sedang makan di restoran.
 - Kamu = **Aplikasi pengguna** (_frontend_)
 - Koki = **Server** (_backend_)
 - Pelayan = **API**
-
-Pelayan (API) tidak perlu tahu cara memasak, tapi ia tahu bagaimana menyampaikan pesanan dan mengembalikan hasilnya.
+  ![Pelayan API](pertemuan-2/img/API-2.jpg)
+  Pelayan (API) tidak perlu tahu cara memasak, tapi ia tahu bagaimana menyampaikan pesanan dan mengembalikan hasilnya.
 
 ---
 
