@@ -158,11 +158,12 @@
       </google-codelab-step>
     
       <google-codelab-step label="Troubleshooting" duration="0">
-        <ul>
-<li><strong>401 Unauthorized</strong> → Token salah/kadaluarsa</li>
-<li><strong>404 Not Found</strong> → URL atau parameter salah</li>
-<li><strong>400 / 422 Validation Error</strong> → Data tidak sesuai format</li>
-<li><strong>500 Internal Server Error</strong> → Error di server</li>
+        <p>Tidak selamanya request yang dikirim menghasilkan response yang sesuai dengan keinginan, ada kalanya kita menemukan error. Berikut Error beserta kode errornya dan alasan kenapa error tersebut muncul:</p>
+<ul>
+<li><strong>401 Unauthorized</strong> → Token salah/kadaluarsa<br> Pastikan apakah endpoint memang butuh autentikasi? Beberapa mungkin publik, tapi sebagian besar butuh token. Pastikan juga token sudah dikirimkan di header <br><br></li>
+<li><strong>404 Not Found</strong> → URL atau parameter salah<br> Cek apakah endpoint URL sudah benar? Salah ketik satu huruf saja bisa membuat error 404 muncul. <br><br></li>
+<li><strong>400 / 422 Validation Error</strong> → Data tidak sesuai format<br> Pastikan semua field wajib sudah diisi dan tipe datanya sesuai <br><br></li>
+<li><strong>500 Internal Server Error</strong> → Error di server<br> Jika kamu tidak punya akses ke server, laporkan ke tim backend dengan payload dan endpoint yang kamu pakai.<br></li>
 </ul>
 
 
@@ -170,12 +171,10 @@
     
       <google-codelab-step label="Latihan" duration="0">
         <ol type="1">
-<li>GET list users dari <code>https://reqres.in/api/users?page=2</code></li>
-<li>GET single user dengan path param</li>
-<li>POST create user dengan body JSON</li>
-<li>PUT update user dengan body JSON</li>
-<li>Upload file ke <code>https://httpbin.org/post</code> dengan form-data</li>
-<li>Buat pre-request script untuk set header <code>X-Request-ID</code> secara acak</li>
+<li>GET list siswa dari <code>https://marhaspplg.my.id/api/siswa</code></li>
+<li>GET single siswa dengan path param</li>
+<li>POST create siswa dengan body JSON</li>
+<li>PUT/PATCH update siswa dengan body JSON</li>
 </ol>
 
 

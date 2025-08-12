@@ -177,18 +177,24 @@ Postman mengirim request HTTP ke endpoint API dan menampilkan response.
 
 ## Troubleshooting
 
-- **401 Unauthorized** → Token salah/kadaluarsa
-- **404 Not Found** → URL atau parameter salah
-- **400 / 422 Validation Error** → Data tidak sesuai format
-- **500 Internal Server Error** → Error di server
+Tidak selamanya request yang dikirim menghasilkan response yang sesuai dengan keinginan, ada kalanya kita menemukan error. Berikut Error beserta kode errornya dan alasan kenapa error tersebut muncul:
+
+- **401 Unauthorized** → Token salah/kadaluarsa<br>
+  Pastikan apakah endpoint memang butuh autentikasi? Beberapa mungkin publik, tapi sebagian besar butuh token. Pastikan juga token sudah dikirimkan di header <br><br>
+- **404 Not Found** → URL atau parameter salah<br>
+  Cek apakah endpoint URL sudah benar? Salah ketik satu huruf saja bisa membuat error 404 muncul. <br><br>
+
+- **400 / 422 Validation Error** → Data tidak sesuai format<br>
+  Pastikan semua field wajib sudah diisi dan tipe datanya sesuai <br><br>
+
+- **500 Internal Server Error** → Error di server<br>
+  Jika kamu tidak punya akses ke server, laporkan ke tim backend dengan payload dan endpoint yang kamu pakai.<br>
 
 ---
 
 ## Latihan
 
-1. GET list users dari `https://reqres.in/api/users?page=2`
-2. GET single user dengan path param
-3. POST create user dengan body JSON
-4. PUT update user dengan body JSON
-5. Upload file ke `https://httpbin.org/post` dengan form-data
-6. Buat pre-request script untuk set header `X-Request-ID` secara acak
+1. GET list siswa dari `https://marhaspplg.my.id/api/siswa`
+2. GET single siswa dengan path param
+3. POST create siswa dengan body JSON
+4. PUT/PATCH update siswa dengan body JSON
