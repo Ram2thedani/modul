@@ -42,19 +42,19 @@ Secara sederhana, API adalah sebuah **jembatan** yang memungkinkan dua aplikasi 
    > "An API is a set of clearly defined methods of communication among various components." <br>
    > Artinya, API adalah kumpulan metode yang terdefinisi dengan jelas untuk komunikasi antar komponen.<br>
 
-2. **James Gosling (Pencipta Java)**
+2. **James Gosling (Pencipta Java)**<br>
 
-   > "APIs are the libraries and tools that allow programmers to connect different pieces of software together."  
-   > Artinya, API adalah alat dan pustaka yang memungkinkan pengembang menghubungkan berbagai software.
+   > "APIs are the libraries and tools that allow programmers to connect different pieces of software together."<br>
+   > Artinya, API adalah alat dan pustaka yang memungkinkan pengembang menghubungkan berbagai software.<br>
 
-3. **Grady Booch (Ahli Arsitektur Software)**
+3. **Grady Booch (Ahli Arsitektur Software)**<br>
 
-   > "An API represents the contract between different software components."  
-   > Artinya, API adalah kesepakatan komunikasi antara dua bagian perangkat lunak.
+   > "An API represents the contract between different software components." <br>
+   > Artinya, API adalah kesepakatan komunikasi antara dua bagian perangkat lunak.<br>
 
-4. **IBM Developer**
-   > "An API is a set of rules that define how applications or devices can connect to and communicate with each other."  
-   > API adalah seperangkat aturan agar aplikasi bisa terhubung dan berkomunikasi satu sama lain.
+4. **IBM Developer**<br>
+   > "An API is a set of rules that define how applications or devices can connect to and communicate with each other." <br>
+   > API adalah seperangkat aturan agar aplikasi bisa terhubung dan berkomunikasi satu sama lain.<br>
 
 #### Analogi Sederhana
 
@@ -62,8 +62,9 @@ Bayangkan kamu sedang makan di restoran.
 
 - Kamu = **Aplikasi pengguna** (_frontend_)
 - Koki = **Server** (_backend_)
-- Pelayan = **API**
+- Pelayan = **API**<br>
   ![Pelayan API](pertemuan-2/img/API-2.jpg)
+  <br>
   Pelayan (API) tidak perlu tahu cara memasak, tapi ia tahu bagaimana menyampaikan pesanan dan mengembalikan hasilnya.
 
 ---
@@ -128,7 +129,8 @@ Postman mengirim request HTTP ke endpoint API dan menampilkan response.
 - **Collection**: Kumpulan request.
 - **Environment**: Variabel yang digunakan di banyak request.
 - **Request**: Permintaan tunggal.
-- **Response**: Balasan API.
+- **Response**: Balasan API.<br>
+  ![SS Postman](pertemuan-2/img/ss.png)<br>
 
 **Langkah Dasar Menggunakan Postman:**
 
