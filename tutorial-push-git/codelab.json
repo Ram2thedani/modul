@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-08-13T08:45:04+07:00",
+  "id": "tutorial-push-git",
+  "duration": 0,
+  "title": "Cara Mengunggah Proyek ke GitHub Menggunakan Visual Studio Code",
+  "authors": "Ramdani",
+  "summary": "Panduan mengunggah proyek ke GitHub menggunakan Visual Studio Code.",
+  "source": "gitpush.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "git",
+    "github",
+    "vscode"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/username/repo/issues",
+  "url": "tutorial-push-git"
+}

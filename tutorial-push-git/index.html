@@ -1,0 +1,124 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Cara Mengunggah Proyek ke GitHub Menggunakan Visual Studio Code</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="tutorial-push-git"
+                  title="Cara Mengunggah Proyek ke GitHub Menggunakan Visual Studio Code"
+                  environment="web"
+                  feedback-link="https://github.com/username/repo/issues">
+    
+      <google-codelab-step label="Step 1 — Buat Repository" duration="0">
+        <ol type="1">
+<li>Buka <a href="https://github.com" target="_blank">GitHub</a> dan buat repository baru (kosong).</li>
+<li>Salin URL repository tersebut, bisa melalui <strong>address bar</strong> atau tombol <strong>Copy</strong> yang ada di bagian bawah halaman.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2 — Buka Proyek" duration="0">
+        <ol type="1">
+<li>Buka proyek Anda di <strong>Visual Studio Code</strong>.</li>
+<li>Buka <strong>Terminal</strong> (<code>View > Terminal</code>).</li>
+<li>Ketik perintah berikut: <pre><code language="language-bash" class="language-bash">git init
+</code></pre>
+</li>
+<li>Jika muncul tulisan: <pre><code>Initialized empty Git repository
+</code></pre>
+dan ada huruf <code>U</code> di sebelah file proyek, berarti repository lokal berhasil dibuat.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3 — Lakukan Autentikasi" duration="0">
+        <p>Masukkan perintah berikut untuk mengatur email Git:</p>
+<pre><code language="language-bash" class="language-bash">git config user.email &#34;email_akun_anda&#34;
+</code></pre>
+<p>Ganti <code>"email_akun_anda"</code> dengan email yang terdaftar di akun GitHub Anda.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4 — Hubungkan dengan Remote Repository" duration="0">
+        <p>Ketik perintah berikut:</p>
+<pre><code language="language-bash" class="language-bash">git remote add origin &lt;link_repository_yang_dicopy&gt;
+</code></pre>
+<p>Ganti <code><link_repository_yang_dicopy></code> dengan URL repository GitHub yang sudah Anda salin.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5 — Lakukan Staging" duration="0">
+        <p>Ketik perintah berikut:</p>
+<pre><code language="language-bash" class="language-bash">git add .
+</code></pre>
+<p>Tunggu hingga semua huruf <code>U</code> berubah menjadi <code>A</code> atau terminal kembali siap menerima perintah baru.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6 — Lakukan Commit" duration="0">
+        <p>Ketik perintah berikut:</p>
+<pre><code language="language-bash" class="language-bash">git commit -m &#34;Tulis pesan commit di sini&#34;
+</code></pre>
+<p>Jika commit berhasil, tanda huruf <code>A</code> pada file proyek akan hilang.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 7 — Lakukan Push" duration="0">
+        <p>Jika proyek belum pernah di-<em>push</em> sebelumnya, ketik:</p>
+<pre><code language="language-bash" class="language-bash">git push -u origin master
+</code></pre>
+<ul>
+<li>Jika muncul pop-up autentikasi, pilih <strong>Sign in with browser</strong>.</li>
+<li>Browser akan terbuka untuk konfirmasi otorisasi, klik tombol hijau <strong>Authorize</strong>.</li>
+<li>Jika browser menampilkan halaman kosong, biarkan saja.</li>
+<li>Pastikan proses <em>push</em> selesai di terminal Visual Studio Code, lalu periksa repository di GitHub untuk memastikan file sudah terunggah.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Catatan Tambahan" duration="0">
+        <ul>
+<li><strong>Huruf U</strong> = <em>Untracked</em> file (belum dimasukkan ke staging).</li>
+<li><strong>Huruf A</strong> = <em>Added</em> file (sudah di staging, siap di-commit).</li>
+<li>Gunakan commit message yang jelas agar mudah melacak perubahan di masa depan.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
