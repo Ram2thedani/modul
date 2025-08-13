@@ -46,7 +46,7 @@ Ketik perintah berikut:
 git remote add origin <link_repository_yang_dicopy>
 ```
 
-Ganti `<<link_repository_yang_dicopy>>` dengan URL repository GitHub yang sudah Anda salin tanpa menggunakan kurung `<<>>`.
+Ganti &lt;link_repository_yang_dicopy&gt; dengan URL repository GitHub yang sudah Anda salin tanpa menggunakan kurung &lt;&gt;.
 
 ## Step 5 — Lakukan Staging
 
