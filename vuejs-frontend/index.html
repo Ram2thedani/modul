@@ -47,16 +47,16 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 2: Persiapan project" duration="0">
-        <p>Pastikan di VS Code sudah terinstal ekstensi <strong>Volar</strong> dan <strong>Vue (official)</strong>.</p>
+      <google-codelab-step label="Persiapan project" duration="0">
+        <p>Pastikan di VS Code sudah terinstal ekstensi <strong>Volar</strong> dan <strong>Vue (official)</strong>. <br><img alt="SS Extension" src="img\\a2b2b6e2cffc6b30.png"><br></p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 3: Buka direktori" duration="0">
+      <google-codelab-step label="Buka direktori" duration="0">
         <ol type="1">
 <li>Buka direktori/folder untuk menyimpan project.</li>
-<li>Klik address bar → ketik <code>cmd</code> → tekan Enter.</li>
+<li>Klik address bar atau tekan F4 → ketik <code>cmd</code> → tekan Enter.</li>
 <li>Jalankan perintah berikut:</li>
 </ol>
 <pre><code language="language-bash" class="language-bash">npm create vite@latest nama-project
@@ -65,14 +65,14 @@
 <ul>
 <li>Pilih <strong>Vue</strong></li>
 <li>Pilih <strong>TypeScript</strong></li>
-<li>Ikuti instruksi setup, lalu jalankan perintah yang ditampilkan.</li>
+<li>Ikuti instruksi setup, lalu jalankan perintah yang ditampilkan.<br><img alt="SS run" src="img\\239bb0e088d32beb.png"><br></li>
 </ul>
-<p>Jika berhasil, buka link yang diberikan dan akan muncul tampilan awal Vue.</p>
+<p>Jika berhasil, buka link yang diberikan dan akan muncul tampilan awal Vue.<br><img alt="SS Link" src="img\\318138bc6589209b.png"><br></p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 4: Struktur Folder" duration="0">
+      <google-codelab-step label="Struktur Folder" duration="0">
         <ol type="1">
 <li>Kembali ke jendela CMD, hentikan aplikasi dengan <code>Ctrl+C</code>.</li>
 <li>Buka project di VS Code dengan:</li>
@@ -91,41 +91,41 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 5: Setup Project" duration="0">
+      <google-codelab-step label="Setup Project" duration="0">
         <h2 is-upgraded>1. Membuat Model</h2>
 <p>Buat file <code>src/models/Siswa.ts</code>:</p>
 <pre><code language="language-ts" class="language-ts">export interface Siswa {
-  id: number
-  nama: string
-  kelas: string
-  jenis_kelamin: string
-  alamat: string
+  id: number;
+  nama: string;
+  kelas: string;
+  jenis_kelamin: string;
+  alamat: string;
 }
 </code></pre>
 <h2 is-upgraded>2. Membuat Service</h2>
 <p>Buat file <code>src/services/siswaService.ts</code>:</p>
-<pre><code language="language-ts" class="language-ts">import type { Siswa } from &#34;../models/Siswa&#34;
+<pre><code language="language-ts" class="language-ts">import type { Siswa } from &#34;../models/Siswa&#34;;
 
-const API_URL = &#34;https://marhaspplg.my.id/api/siswa&#34;
+const API_URL = &#34;https://marhaspplg.my.id/api/siswa&#34;;
 
 export async function getAllSiswa(): Promise&lt;Siswa[]&gt; {
-  const res = await fetch(API_URL)
-  const body = await res.json()
-  return body.data as Siswa[]
+  const res = await fetch(API_URL);
+  const body = await res.json();
+  return body.data as Siswa[];
 }
 </code></pre>
 <h2 is-upgraded>3. Membuat View</h2>
 <p>Buat file <code>src/views/HomeView.vue</code>:</p>
 <pre><code language="language-vue" class="language-vue">&lt;script setup lang=&#34;ts&#34;&gt;
-import { ref, onMounted } from &#34;vue&#34;
-import type { Siswa } from &#34;../models/Siswa&#34;
-import { getAllSiswa } from &#34;../services/siswaService&#34;
+import { ref, onMounted } from &#34;vue&#34;;
+import type { Siswa } from &#34;../models/Siswa&#34;;
+import { getAllSiswa } from &#34;../services/siswaService&#34;;
 
-const siswaList = ref&lt;Siswa[]&gt;([])
+const siswaList = ref&lt;Siswa[]&gt;([]);
 
 onMounted(async () =&gt; {
-  siswaList.value = await getAllSiswa()
-})
+  siswaList.value = await getAllSiswa();
+});
 &lt;/script&gt;
 
 &lt;template&gt;
@@ -146,7 +146,7 @@ onMounted(async () =&gt; {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 6: Styling &amp; Finishing" duration="0">
+      <google-codelab-step label="Styling &amp; Finishing" duration="0">
         <p>Edit file <code>src/style.css</code>, tambahkan:</p>
 <pre><code language="language-css" class="language-css">.card {
   width: 100%;
@@ -154,7 +154,7 @@ onMounted(async () =&gt; {
   background: white;
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease-in-out;
 }
 
@@ -175,14 +175,14 @@ onMounted(async () =&gt; {
 &lt;/template&gt;
 
 &lt;script setup lang=&#34;ts&#34;&gt;
-import HomeView from &#34;./views/HomeView.vue&#34;
+import HomeView from &#34;./views/HomeView.vue&#34;;
 &lt;/script&gt;
 </code></pre>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 7: Tips &amp; Catatan" duration="0">
+      <google-codelab-step label="Tips &amp; Catatan" duration="0">
         <ul>
 <li>Jangan menutup CMD selama server berjalan.</li>
 <li>Jalankan aplikasi dengan:</li>
