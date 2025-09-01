@@ -1,0 +1,208 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Membangun aplikasi frontend menggunakan Vue.js</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="vuejs-frontend"
+                  title="Membangun aplikasi frontend menggunakan Vue.js"
+                  environment="web"
+                  feedback-link="https://github.com/ram2thedani">
+    
+      <google-codelab-step label="Step 1: Apa itu VueJS?" duration="0">
+        <p>VueJS merupakan sebuah framework JavaScript untuk membangun aplikasi web atau tampilan interface website agar lebih interaktif. VueJS dapat digunakan untuk membangun aplikasi berbasis user interface, seperti halaman web, aplikasi mobile, dan aplikasi desktop.</p>
+<p>VueJS menyediakan beragam fitur yang membantu developer untuk mempermudah dalam pengembangan website, di antaranya:</p>
+<ul>
+<li><strong>Components</strong>: Membuat elemen kustom pada HTML yang dapat digunakan secara berulang-ulang.</li>
+<li><strong>Computed properties</strong>: Membantu pengguna untuk melihat perubahan pada elemen user-interface tanpa menambah kode.</li>
+<li><strong>Data binding</strong>: Memanipulasi dan memberikan values pada atribut HTML menggunakan <code>v-bind</code>.</li>
+<li><strong>Directives</strong>: Action bawaan seperti <code>v-if</code>, <code>v-show</code>, <code>v-else</code>, <code>v-on</code>, <code>v-bind</code>, dan <code>v-model</code>.</li>
+<li><strong>Event handling</strong>: Menambahkan atribut ke elemen DOM (<code>v-on</code>) agar website lebih interaktif.</li>
+<li><strong>Lightweight</strong>: Script lebih sederhana namun tetap powerful dan cepat.</li>
+<li><strong>Routing</strong>: Menghubungkan antar halaman dalam aplikasi single-page.</li>
+<li><strong>Templates</strong>: Menghubungkan DOM dengan data instance.</li>
+<li><strong>Virtual DOM</strong>: Replika DOM untuk me-review perubahan sebelum diterapkan.</li>
+<li><strong>Watchers</strong>: Menangani perubahan data agar kode lebih sederhana.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Persiapan project" duration="0">
+        <p>Pastikan di VS Code sudah terinstal ekstensi <strong>Volar</strong> dan <strong>Vue (official)</strong>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Buka direktori" duration="0">
+        <ol type="1">
+<li>Buka direktori/folder untuk menyimpan project.</li>
+<li>Klik address bar → ketik <code>cmd</code> → tekan Enter.</li>
+<li>Jalankan perintah berikut:</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">npm create vite@latest nama-project
+</code></pre>
+<p>Gunakan nama project misalnya <code>aplikasi-api-vue</code>.</p>
+<ul>
+<li>Pilih <strong>Vue</strong></li>
+<li>Pilih <strong>TypeScript</strong></li>
+<li>Ikuti instruksi setup, lalu jalankan perintah yang ditampilkan.</li>
+</ul>
+<p>Jika berhasil, buka link yang diberikan dan akan muncul tampilan awal Vue.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Struktur Folder" duration="0">
+        <ol type="1">
+<li>Kembali ke jendela CMD, hentikan aplikasi dengan <code>Ctrl+C</code>.</li>
+<li>Buka project di VS Code dengan:</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">code .
+</code></pre>
+<ol type="1" start="3">
+<li>Buat struktur folder seperti berikut di dalam <code>src</code>:</li>
+</ol>
+<pre><code>src/
+ ┣ models/
+ ┣ services/
+ ┣ views/
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Setup Project" duration="0">
+        <h2 is-upgraded>1. Membuat Model</h2>
+<p>Buat file <code>src/models/Siswa.ts</code>:</p>
+<pre><code language="language-ts" class="language-ts">export interface Siswa {
+  id: number
+  nama: string
+  kelas: string
+  jenis_kelamin: string
+  alamat: string
+}
+</code></pre>
+<h2 is-upgraded>2. Membuat Service</h2>
+<p>Buat file <code>src/services/siswaService.ts</code>:</p>
+<pre><code language="language-ts" class="language-ts">import type { Siswa } from &#34;../models/Siswa&#34;
+
+const API_URL = &#34;https://marhaspplg.my.id/api/siswa&#34;
+
+export async function getAllSiswa(): Promise&lt;Siswa[]&gt; {
+  const res = await fetch(API_URL)
+  const body = await res.json()
+  return body.data as Siswa[]
+}
+</code></pre>
+<h2 is-upgraded>3. Membuat View</h2>
+<p>Buat file <code>src/views/HomeView.vue</code>:</p>
+<pre><code language="language-vue" class="language-vue">&lt;script setup lang=&#34;ts&#34;&gt;
+import { ref, onMounted } from &#34;vue&#34;
+import type { Siswa } from &#34;../models/Siswa&#34;
+import { getAllSiswa } from &#34;../services/siswaService&#34;
+
+const siswaList = ref&lt;Siswa[]&gt;([])
+
+onMounted(async () =&gt; {
+  siswaList.value = await getAllSiswa()
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Daftar Siswa&lt;/h1&gt;
+    &lt;div class=&#34;card-container&#34;&gt;
+      &lt;div v-for=&#34;siswa in siswaList&#34; :key=&#34;siswa.id&#34; class=&#34;card&#34;&gt;
+        &lt;p&gt;&lt;strong&gt;Nama:&lt;/strong&gt; &#123;&#123; siswa.nama }}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Kelas:&lt;/strong&gt; &#123;&#123; siswa.kelas }}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Jenis Kelamin:&lt;/strong&gt; &#123;&#123; siswa.jenis_kelamin }}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Alamat:&lt;/strong&gt; &#123;&#123; siswa.alamat }}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6: Styling &amp; Finishing" duration="0">
+        <p>Edit file <code>src/style.css</code>, tambahkan:</p>
+<pre><code language="language-css" class="language-css">.card {
+  width: 100%;
+  text-align: left;
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+</code></pre>
+<p>Lalu, edit <code>src/App.vue</code> agar hanya berisi:</p>
+<pre><code language="language-vue" class="language-vue">&lt;template&gt;
+  &lt;HomeView /&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&#34;ts&#34;&gt;
+import HomeView from &#34;./views/HomeView.vue&#34;
+&lt;/script&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 7: Tips &amp; Catatan" duration="0">
+        <ul>
+<li>Jangan menutup CMD selama server berjalan.</li>
+<li>Jalankan aplikasi dengan:</li>
+</ul>
+<pre><code language="language-bash" class="language-bash">npm run dev
+</code></pre>
+<ul>
+<li>Hentikan aplikasi dengan <code>Ctrl+C</code>, lalu ketik <code>Y</code> dan tekan Enter.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
