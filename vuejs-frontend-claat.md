@@ -9,6 +9,7 @@ feedback link: https://github.com/ram2thedani
 # Membangun aplikasi frontend menggunakan Vue.js
 
 ## Step 1: Apa itu VueJS?
+
 VueJS merupakan sebuah framework JavaScript untuk membangun aplikasi web atau tampilan interface website agar lebih interaktif. VueJS dapat digunakan untuk membangun aplikasi berbasis user interface, seperti halaman web, aplikasi mobile, dan aplikasi desktop.
 
 VueJS menyediakan beragam fitur yang membantu developer untuk mempermudah dalam pengembangan website, di antaranya:
@@ -26,14 +27,17 @@ VueJS menyediakan beragam fitur yang membantu developer untuk mempermudah dalam 
 
 ---
 
-## Step 2: Persiapan project
-Pastikan di VS Code sudah terinstal ekstensi **Volar** dan **Vue (official)**.
+## Persiapan project
+
+Pastikan di VS Code sudah terinstal ekstensi **Volar** dan **Vue (official)**. <br>
+![SS Extension](vuejs-frontend/img/volar.png)<br>
 
 ---
 
-## Step 3: Buka direktori
+## Buka direktori
+
 1. Buka direktori/folder untuk menyimpan project.
-2. Klik address bar → ketik `cmd` → tekan Enter.
+2. Klik address bar atau tekan F4 → ketik `cmd` → tekan Enter.
 3. Jalankan perintah berikut:
 
 ```bash
@@ -42,15 +46,18 @@ npm create vite@latest nama-project
 
 Gunakan nama project misalnya `aplikasi-api-vue`.
 
-- Pilih **Vue**  
-- Pilih **TypeScript**  
-- Ikuti instruksi setup, lalu jalankan perintah yang ditampilkan.  
+- Pilih **Vue**
+- Pilih **TypeScript**
+- Ikuti instruksi setup, lalu jalankan perintah yang ditampilkan.<br>
+  ![SS run](vuejs-frontend/img/run.png)<br>
 
-Jika berhasil, buka link yang diberikan dan akan muncul tampilan awal Vue.
+Jika berhasil, buka link yang diberikan dan akan muncul tampilan awal Vue.<br>
+![SS Link](vuejs-frontend/img/link.png)<br>
 
 ---
 
-## Step 4: Struktur Folder
+## Struktur Folder
+
 1. Kembali ke jendela CMD, hentikan aplikasi dengan `Ctrl+C`.
 2. Buka project di VS Code dengan:
 
@@ -69,50 +76,53 @@ src/
 
 ---
 
-## Step 5: Setup Project
+## Setup Project
 
 ### 1. Membuat Model
+
 Buat file `src/models/Siswa.ts`:
 
 ```ts
 export interface Siswa {
-  id: number
-  nama: string
-  kelas: string
-  jenis_kelamin: string
-  alamat: string
+  id: number;
+  nama: string;
+  kelas: string;
+  jenis_kelamin: string;
+  alamat: string;
 }
 ```
 
 ### 2. Membuat Service
+
 Buat file `src/services/siswaService.ts`:
 
 ```ts
-import type { Siswa } from "../models/Siswa"
+import type { Siswa } from "../models/Siswa";
 
-const API_URL = "https://marhaspplg.my.id/api/siswa"
+const API_URL = "https://marhaspplg.my.id/api/siswa";
 
 export async function getAllSiswa(): Promise<Siswa[]> {
-  const res = await fetch(API_URL)
-  const body = await res.json()
-  return body.data as Siswa[]
+  const res = await fetch(API_URL);
+  const body = await res.json();
+  return body.data as Siswa[];
 }
 ```
 
 ### 3. Membuat View
+
 Buat file `src/views/HomeView.vue`:
 
 ```vue
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
-import type { Siswa } from "../models/Siswa"
-import { getAllSiswa } from "../services/siswaService"
+import { ref, onMounted } from "vue";
+import type { Siswa } from "../models/Siswa";
+import { getAllSiswa } from "../services/siswaService";
 
-const siswaList = ref<Siswa[]>([])
+const siswaList = ref<Siswa[]>([]);
 
 onMounted(async () => {
-  siswaList.value = await getAllSiswa()
-})
+  siswaList.value = await getAllSiswa();
+});
 </script>
 
 <template>
@@ -132,7 +142,8 @@ onMounted(async () => {
 
 ---
 
-## Step 6: Styling & Finishing
+## Styling & Finishing
+
 Edit file `src/style.css`, tambahkan:
 
 ```css
@@ -142,7 +153,7 @@ Edit file `src/style.css`, tambahkan:
   background: white;
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease-in-out;
 }
 
@@ -166,13 +177,14 @@ Lalu, edit `src/App.vue` agar hanya berisi:
 </template>
 
 <script setup lang="ts">
-import HomeView from "./views/HomeView.vue"
+import HomeView from "./views/HomeView.vue";
 </script>
 ```
 
 ---
 
-## Step 7: Tips & Catatan
+## Tips & Catatan
+
 - Jangan menutup CMD selama server berjalan.
 - Jalankan aplikasi dengan:
 
