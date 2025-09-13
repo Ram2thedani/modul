@@ -122,11 +122,13 @@ async function submitForm() {
     <form @submit.prevent="submitForm">
       <label for="nama">Nama</label>
       <input id="nama" v-model="nama" type="text" />
-      <small v-if="errors.nama" style="color: red">{{ errors.nama }}</small><br>
+      <small v-if="errors.nama" style="color: red">{{ errors.nama }}</small
+      ><br />
 
       <label for="kelas">Kelas</label>
       <input id="kelas" v-model="kelas" type="text" />
-      <small v-if="errors.kelas" style="color: red">{{ errors.kelas }}</small><br>
+      <small v-if="errors.kelas" style="color: red">{{ errors.kelas }}</small
+      ><br />
 
       <label for="jenisKelamin">Jenis Kelamin</label>
       <select id="jenisKelamin" v-model="jenis_kelamin">
@@ -134,11 +136,15 @@ async function submitForm() {
         <option value="Laki-Laki">Laki-Laki</option>
         <option value="Perempuan">Perempuan</option>
       </select>
-      <small v-if="errors.jenisKelamin" style="color: red">{{ errors.jenisKelamin }}</small><br>
+      <small v-if="errors.jenisKelamin" style="color: red">{{
+        errors.jenisKelamin
+      }}</small
+      ><br />
 
       <label for="alamat">Alamat</label>
       <textarea id="alamat" v-model="alamat"></textarea>
-      <small v-if="errors.alamat" style="color: red">{{ errors.alamat }}</small><br>
+      <small v-if="errors.alamat" style="color: red">{{ errors.alamat }}</small
+      ><br />
 
       <button type="submit">Simpan</button>
     </form>
@@ -153,14 +159,12 @@ async function submitForm() {
 Edit file `src/main.ts` menjadi:
 
 ```ts
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import router from "./router"; 
+import { createApp } from "vue";
+import "./style.css";
+import App from "./App.vue";
+import router from "./router";
 
-createApp(App)
-  .use(router) 
-  .mount("#app");
+createApp(App).use(router).mount("#app");
 ```
 
 ---
@@ -185,7 +189,8 @@ Jalankan aplikasi melalui CMD:
 npm run dev
 ```
 
-Tambahkan `/create` pada address bar untuk mengakses halaman.
+Tambahkan `/create` pada address bar untuk mengakses halaman.<br>
+![SS Extension](vuejs-post-siswa/img/url.png)
 
 ---
 
@@ -194,7 +199,7 @@ Tambahkan `/create` pada address bar untuk mengakses halaman.
 Edit file `src/views/HomeView.vue`, tambahkan kode di bawah tag `<h1>`:
 
 ```vue
-<router-link :to="{name: 'CreateSiswa'}">Tambah</router-link>
+<router-link :to="{ name: 'CreateSiswa' }">Tambah</router-link>
 ```
 
 ---
@@ -263,4 +268,3 @@ textarea {
   background: #565e64;
 }
 ```
-

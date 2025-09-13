@@ -135,11 +135,13 @@ async function submitForm() {
     &lt;form @submit.prevent=&#34;submitForm&#34;&gt;
       &lt;label for=&#34;nama&#34;&gt;Nama&lt;/label&gt;
       &lt;input id=&#34;nama&#34; v-model=&#34;nama&#34; type=&#34;text&#34; /&gt;
-      &lt;small v-if=&#34;errors.nama&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.nama }}&lt;/small&gt;&lt;br&gt;
+      &lt;small v-if=&#34;errors.nama&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.nama }}&lt;/small
+      &gt;&lt;br /&gt;
 
       &lt;label for=&#34;kelas&#34;&gt;Kelas&lt;/label&gt;
       &lt;input id=&#34;kelas&#34; v-model=&#34;kelas&#34; type=&#34;text&#34; /&gt;
-      &lt;small v-if=&#34;errors.kelas&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.kelas }}&lt;/small&gt;&lt;br&gt;
+      &lt;small v-if=&#34;errors.kelas&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.kelas }}&lt;/small
+      &gt;&lt;br /&gt;
 
       &lt;label for=&#34;jenisKelamin&#34;&gt;Jenis Kelamin&lt;/label&gt;
       &lt;select id=&#34;jenisKelamin&#34; v-model=&#34;jenis_kelamin&#34;&gt;
@@ -147,11 +149,15 @@ async function submitForm() {
         &lt;option value=&#34;Laki-Laki&#34;&gt;Laki-Laki&lt;/option&gt;
         &lt;option value=&#34;Perempuan&#34;&gt;Perempuan&lt;/option&gt;
       &lt;/select&gt;
-      &lt;small v-if=&#34;errors.jenisKelamin&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.jenisKelamin }}&lt;/small&gt;&lt;br&gt;
+      &lt;small v-if=&#34;errors.jenisKelamin&#34; style=&#34;color: red&#34;&gt;&#123;&#123;
+        errors.jenisKelamin
+      }}&lt;/small
+      &gt;&lt;br /&gt;
 
       &lt;label for=&#34;alamat&#34;&gt;Alamat&lt;/label&gt;
       &lt;textarea id=&#34;alamat&#34; v-model=&#34;alamat&#34;&gt;&lt;/textarea&gt;
-      &lt;small v-if=&#34;errors.alamat&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.alamat }}&lt;/small&gt;&lt;br&gt;
+      &lt;small v-if=&#34;errors.alamat&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.alamat }}&lt;/small
+      &gt;&lt;br /&gt;
 
       &lt;button type=&#34;submit&#34;&gt;Simpan&lt;/button&gt;
     &lt;/form&gt;
@@ -164,14 +170,12 @@ async function submitForm() {
     
       <google-codelab-step label="Step 4: Mendaftarkan Router" duration="0">
         <p>Edit file <code>src/main.ts</code> menjadi:</p>
-<pre><code language="language-ts" class="language-ts">import { createApp } from &#39;vue&#39;
-import &#39;./style.css&#39;
-import App from &#39;./App.vue&#39;
-import router from &#34;./router&#34;; 
+<pre><code language="language-ts" class="language-ts">import { createApp } from &#34;vue&#34;;
+import &#34;./style.css&#34;;
+import App from &#34;./App.vue&#34;;
+import router from &#34;./router&#34;;
 
-createApp(App)
-  .use(router) 
-  .mount(&#34;#app&#34;);
+createApp(App).use(router).mount(&#34;#app&#34;);
 </code></pre>
 
 
@@ -191,14 +195,14 @@ createApp(App)
         <p>Jalankan aplikasi melalui CMD:</p>
 <pre><code language="language-bash" class="language-bash">npm run dev
 </code></pre>
-<p>Tambahkan <code>/create</code> pada address bar untuk mengakses halaman.</p>
+<p>Tambahkan <code>/create</code> pada address bar untuk mengakses halaman.<br><img alt="SS Extension" src="img\\678ad9af36ed6630.png"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Step 7: Membuat Navigasi" duration="0">
-        <p>Edit file <code>src/views/HomeView.vue</code>, tambahkan kode di bawah tag h1:</p>
-<pre><code language="language-vue" class="language-vue">&lt;router-link :to=&#34;{name: &#39;CreateSiswa&#39;}&#34;&gt;Tambah&lt;/router-link&gt;
+        <p>Edit file <code>src/views/HomeView.vue</code>, tambahkan kode di bawah tag <code><h1></code>:</p>
+<pre><code language="language-vue" class="language-vue">&lt;router-link :to=&#34;{ name: &#39;CreateSiswa&#39; }&#34;&gt;Tambah&lt;/router-link&gt;
 </code></pre>
 
 
