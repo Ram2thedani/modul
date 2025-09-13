@@ -1,16 +1,15 @@
-summary: Membuat fungsi POST untuk menyimpan data siswa menggunakan Vue 3 + TypeScript
 id: vue-post-siswa
+summary: Membuat fungsi POST untuk menyimpan data siswa menggunakan Vue 3 + TypeScript
 categories: vue, typescript, crud
-tags: vue, typescript, crud, api
 status: Published
 authors: Ramdani
-feedback link: https://github.com/
+Feedback Link: https://github.com/username/repo/issues
 
 # Vue 3 - Menyimpan Data dengan Method POST
 
 ## Step 1 - Persiapan
 
-Setelah sebelumnya kita berhasil membuat fungsi untuk menampilkan data dari API siswa lewat **GET**, sekarang kita akan melanjutkan progress untuk membuat fungsi menyimpan data lewat method **POST**.  
+Setelah sebelumnya kita berhasil membuat fungsi untuk menampilkan data dari API siswa lewat **GET**, sekarang kita akan melanjutkan progress untuk membuat fungsi menyimpan data lewat method **POST**.
 
 Adapun persiapan yang harus dilakukan di antaranya:
 
@@ -19,6 +18,7 @@ Adapun persiapan yang harus dilakukan di antaranya:
 
 2. **Install router**  
    Pada jendela CMD ketik perintah berikut:
+
    ```bash
    npm install vue-router@latest
    ```
@@ -58,6 +58,7 @@ Buat folder baru di dalam folder **src** bernama `router` dan buat file baru ber
 <br>
 
 ### File `router/index.ts`
+
 ```ts
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
@@ -124,11 +125,13 @@ async function submitForm() {
     <form @submit.prevent="submitForm">
       <label for="nama">Nama</label>
       <input id="nama" v-model="nama" type="text" />
-      <small v-if="errors.nama" style="color: red">{{ errors.nama }}</small><br />
+      <small v-if="errors.nama" style="color: red">{{ errors.nama }}</small
+      ><br />
 
       <label for="kelas">Kelas</label>
       <input id="kelas" v-model="kelas" type="text" />
-      <small v-if="errors.kelas" style="color: red">{{ errors.kelas }}</small><br />
+      <small v-if="errors.kelas" style="color: red">{{ errors.kelas }}</small
+      ><br />
 
       <label for="jenisKelamin">Jenis Kelamin</label>
       <select id="jenisKelamin" v-model="jenis_kelamin">
@@ -136,11 +139,15 @@ async function submitForm() {
         <option value="Laki-Laki">Laki-Laki</option>
         <option value="Perempuan">Perempuan</option>
       </select>
-      <small v-if="errors.jenisKelamin" style="color: red">{{ errors.jenisKelamin }}</small><br />
+      <small v-if="errors.jenisKelamin" style="color: red">{{
+        errors.jenisKelamin
+      }}</small
+      ><br />
 
       <label for="alamat">Alamat</label>
       <textarea id="alamat" v-model="alamat"></textarea>
-      <small v-if="errors.alamat" style="color: red">{{ errors.alamat }}</small><br />
+      <small v-if="errors.alamat" style="color: red">{{ errors.alamat }}</small
+      ><br />
 
       <button type="submit">Simpan</button>
     </form>
@@ -158,9 +165,7 @@ import "./style.css";
 import App from "./App.vue";
 import router from "./router";
 
-createApp(App)
-  .use(router)
-  .mount("#app");
+createApp(App).use(router).mount("#app");
 ```
 
 ## Step 5 - Membuat Halaman Menjadi Dinamis
