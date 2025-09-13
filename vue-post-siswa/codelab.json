@@ -3,13 +3,13 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2025-09-13T08:13:29+07:00",
+  "updated": "2025-09-13T08:28:01+07:00",
   "id": "vue-post-siswa",
   "duration": 0,
   "title": "Vue 3 - Menyimpan Data dengan Method POST",
   "authors": "Ramdani",
   "summary": "Membuat fungsi POST untuk menyimpan data siswa menggunakan Vue 3 + TypeScript",
-  "source": "vue-post-siswa.md",
+  "source": "vue-post.md",
   "theme": "",
   "status": [
     "published"
