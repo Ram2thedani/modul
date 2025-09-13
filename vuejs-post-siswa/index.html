@@ -1,0 +1,281 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Menambahkan Data Siswa dengan Method POST di Vue.js</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="vuejs-post-siswa"
+                  title="Menambahkan Data Siswa dengan Method POST di Vue.js"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Step 1: Persiapan" duration="0">
+        <p>Setelah sebelumnya kita berhasil membuat fungsi untuk menampilkan data dari API siswa lewat GET, sekarang kita akan melanjutkan progress untuk membuat fungsi menyimpan data lewat method <strong>POST</strong>. Adapun persiapan yang harus dilakukan di antaranya:</p>
+<ol type="1">
+<li><strong>Buka project di VS Code lewat CMD<br></strong> Apabila sebelumnya project di-close, buka kembali folder project lewat CMD (pastikan membuka jendela CMD di dalam folder project, bukan di luar).</li>
+<li><strong>Install router<br></strong> Pada jendela CMD ketik perintah berikut:</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">npm install vue-router@latest
+</code></pre>
+<ol type="1" start="3">
+<li><strong>Reload jendela di VS Code<br></strong> Tekan <code>Ctrl+Shift+P</code> → ketik <code>Reload Window</code> → tekan Enter.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Mengupdate Service" duration="0">
+        <p>Edit file <code>src/services/siswaService.ts</code> dan tambahkan fungsi berikut di bawah <code>getAllSiswa()</code>:</p>
+<pre><code language="language-ts" class="language-ts">export async function storeSiswa(payload: Omit&lt;Siswa, &#34;id&#34;&gt;): Promise&lt;Siswa&gt; {
+  const res = await fetch(API_URL, {
+    method: &#34;POST&#34;,
+    headers: {
+      &#34;Content-Type&#34;: &#34;application/json&#34;,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error(&#34;Gagal menyimpan data siswa&#34;);
+  }
+
+  const body = await res.json();
+  return body.data;
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Membuat View dan Router" duration="0">
+        <ol type="1">
+<li>Buat folder baru <code>src/router</code>.</li>
+<li>Buat file baru <code>src/views/CreateSiswa.vue</code>.</li>
+<li>Buat file baru <code>src/router/index.ts</code> dengan isi berikut:</li>
+</ol>
+<pre><code language="language-ts" class="language-ts">import { createRouter, createWebHistory } from &#34;vue-router&#34;;
+import HomeView from &#34;../views/HomeView.vue&#34;;
+import CreateSiswa from &#34;../views/CreateSiswa.vue&#34;;
+
+const routes = [
+  { path: &#34;/&#34;, name: &#34;Home&#34;, component: HomeView },
+  { path: &#34;/create&#34;, name: &#34;CreateSiswa&#34;, component: CreateSiswa },
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+export default router;
+</code></pre>
+<ol type="1" start="4">
+<li>Tambahkan script berikut ke dalam <code>src/views/CreateSiswa.vue</code>:</li>
+</ol>
+<pre><code language="language-vue" class="language-vue">&lt;script setup lang=&#34;ts&#34;&gt;
+import { ref } from &#34;vue&#34;;
+import { useRouter } from &#34;vue-router&#34;;
+import { storeSiswa } from &#34;../services/siswaService&#34;;
+
+const router = useRouter();
+
+const nama = ref(&#34;&#34;);
+const kelas = ref(&#34;&#34;);
+const jenis_kelamin = ref(&#34;&#34;);
+const alamat = ref(&#34;&#34;);
+
+const errors = ref&lt;{ [key: string]: string }&gt;({});
+
+function validateForm() {
+  errors.value = {};
+
+  if (!nama.value) errors.value.nama = &#34;Nama wajib diisi&#34;;
+  if (!kelas.value) errors.value.kelas = &#34;Kelas wajib diisi&#34;;
+  if (!jenis_kelamin.value) errors.value.jenisKelamin = &#34;Pilih jenis kelamin&#34;;
+  if (!alamat.value) errors.value.alamat = &#34;Alamat wajib diisi&#34;;
+
+  return Object.keys(errors.value).length === 0;
+}
+
+async function submitForm() {
+  if (validateForm()) {
+    await storeSiswa({
+      nama: nama.value,
+      kelas: kelas.value,
+      jenis_kelamin: jenis_kelamin.value,
+      alamat: alamat.value,
+    });
+    router.push(&#34;/&#34;);
+  }
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;h1&gt;Tambah Siswa&lt;/h1&gt;
+  &lt;div class=&#34;form-container&#34;&gt;
+    &lt;form @submit.prevent=&#34;submitForm&#34;&gt;
+      &lt;label for=&#34;nama&#34;&gt;Nama&lt;/label&gt;
+      &lt;input id=&#34;nama&#34; v-model=&#34;nama&#34; type=&#34;text&#34; /&gt;
+      &lt;small v-if=&#34;errors.nama&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.nama }}&lt;/small&gt;&lt;br&gt;
+
+      &lt;label for=&#34;kelas&#34;&gt;Kelas&lt;/label&gt;
+      &lt;input id=&#34;kelas&#34; v-model=&#34;kelas&#34; type=&#34;text&#34; /&gt;
+      &lt;small v-if=&#34;errors.kelas&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.kelas }}&lt;/small&gt;&lt;br&gt;
+
+      &lt;label for=&#34;jenisKelamin&#34;&gt;Jenis Kelamin&lt;/label&gt;
+      &lt;select id=&#34;jenisKelamin&#34; v-model=&#34;jenis_kelamin&#34;&gt;
+        &lt;option value=&#34;&#34;&gt;Pilih&lt;/option&gt;
+        &lt;option value=&#34;Laki-Laki&#34;&gt;Laki-Laki&lt;/option&gt;
+        &lt;option value=&#34;Perempuan&#34;&gt;Perempuan&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;small v-if=&#34;errors.jenisKelamin&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.jenisKelamin }}&lt;/small&gt;&lt;br&gt;
+
+      &lt;label for=&#34;alamat&#34;&gt;Alamat&lt;/label&gt;
+      &lt;textarea id=&#34;alamat&#34; v-model=&#34;alamat&#34;&gt;&lt;/textarea&gt;
+      &lt;small v-if=&#34;errors.alamat&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.alamat }}&lt;/small&gt;&lt;br&gt;
+
+      &lt;button type=&#34;submit&#34;&gt;Simpan&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Mendaftarkan Router" duration="0">
+        <p>Edit file <code>src/main.ts</code> menjadi:</p>
+<pre><code language="language-ts" class="language-ts">import { createApp } from &#39;vue&#39;
+import &#39;./style.css&#39;
+import App from &#39;./App.vue&#39;
+import router from &#34;./router&#34;; 
+
+createApp(App)
+  .use(router) 
+  .mount(&#34;#app&#34;);
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Membuat Halaman Dinamis" duration="0">
+        <p>Edit isi file <code>src/App.vue</code> menjadi:</p>
+<pre><code language="language-vue" class="language-vue">&lt;template&gt;
+  &lt;router-view /&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6: Test Aplikasi" duration="0">
+        <p>Jalankan aplikasi melalui CMD:</p>
+<pre><code language="language-bash" class="language-bash">npm run dev
+</code></pre>
+<p>Tambahkan <code>/create</code> pada address bar untuk mengakses halaman.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 7: Membuat Navigasi" duration="0">
+        <p>Edit file <code>src/views/HomeView.vue</code>, tambahkan kode di bawah tag <code><h1></code>:</p>
+<pre><code language="language-vue" class="language-vue">&lt;router-link :to=&#34;{name: &#39;CreateSiswa&#39;}&#34;&gt;Tambah&lt;/router-link&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Styling Tambahan (Opsional)" duration="0">
+        <p>Edit file <code>src/style.css</code> untuk menambahkan styling:</p>
+<pre><code language="language-css" class="language-css">.form-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  text-decoration: none;
+  background: #6c757d;
+  color: white;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.btn-secondary:hover {
+  background: #565e64;
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
