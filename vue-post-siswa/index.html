@@ -29,8 +29,7 @@
                   feedback-link="https://github.com/username/repo/issues">
     
       <google-codelab-step label="Step 1 - Persiapan" duration="0">
-        <p>Setelah sebelumnya kita berhasil membuat fungsi untuk menampilkan data dari API siswa lewat <strong>GET</strong>, sekarang kita akan melanjutkan progress untuk membuat fungsi menyimpan data lewat method <strong>POST</strong>.</p>
-<p>Adapun persiapan yang harus dilakukan di antaranya:</p>
+        <p>Setelah sebelumnya kita berhasil membuat fungsi untuk menampilkan data dari API siswa lewat <strong>GET</strong>, sekarang kita akan melanjutkan progress untuk membuat fungsi menyimpan data lewat method <strong>POST</strong>. Adapun persiapan yang harus dilakukan di antaranya:</p>
 <ol type="1">
 <li><strong>Buka project di VS Code lewat CMD<br></strong> Apabila sebelumnya project di-close, buka kembali folder project lewat CMD (pastikan membuka jendela CMD di dalam folder project, bukan di luar).</li>
 <li><strong>Install router<br></strong> Pada jendela CMD ketik perintah berikut:<pre><code language="language-bash" class="language-bash">npm install vue-router@latest
@@ -43,7 +42,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Step 2 - Mengupdate Service" duration="0">
-        <p>Buka file <strong>siswaService.ts</strong>, lalu ketikkan kode berikut di bawah kurung kurawal penutup function <code>getAllSiswa()</code>:</p>
+        <p>Pada file <strong>siswaService.ts</strong> ketikkan kode berikut di bawah kurung kurawal penutup function <code>getAllSiswa()</code>:</p>
 <pre><code language="language-ts" class="language-ts">// Fungsi untuk menyimpan siswa baru
 export async function storeSiswa(payload: Omit&lt;Siswa, &#34;id&#34;&gt;): Promise&lt;Siswa&gt; {
   const res = await fetch(API_URL, {
@@ -67,7 +66,7 @@ export async function storeSiswa(payload: Omit&lt;Siswa, &#34;id&#34;&gt;): Prom
       </google-codelab-step>
     
       <google-codelab-step label="Step 3 - Membuat View dan Router" duration="0">
-        <p>Buat folder baru di dalam folder <strong>src</strong> bernama <code>router</code> dan buat file baru bernama <strong>CreateSiswa.vue</strong> di dalam folder <code>src/views</code>.</p>
+        <p>Buat <strong>folder</strong> baru di dalam folder <code>src</code> bernama <code>router</code> dan buat <strong>file</strong> baru bernama <code>CreateSiswa.vue</code> di dalam folder <code>src/views</code>.</p>
 <h2 is-upgraded>File <code>router/index.ts</code></h2>
 <pre><code language="language-ts" class="language-ts">import { createRouter, createWebHistory } from &#34;vue-router&#34;;
 import HomeView from &#34;../views/HomeView.vue&#34;;
@@ -131,13 +130,11 @@ async function submitForm() {
     &lt;form @submit.prevent=&#34;submitForm&#34;&gt;
       &lt;label for=&#34;nama&#34;&gt;Nama&lt;/label&gt;
       &lt;input id=&#34;nama&#34; v-model=&#34;nama&#34; type=&#34;text&#34; /&gt;
-      &lt;small v-if=&#34;errors.nama&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.nama }}&lt;/small
-      &gt;&lt;br /&gt;
+      &lt;small v-if=&#34;errors.nama&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.nama }}&lt;/small&gt;&lt;br /&gt;
 
       &lt;label for=&#34;kelas&#34;&gt;Kelas&lt;/label&gt;
       &lt;input id=&#34;kelas&#34; v-model=&#34;kelas&#34; type=&#34;text&#34; /&gt;
-      &lt;small v-if=&#34;errors.kelas&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.kelas }}&lt;/small
-      &gt;&lt;br /&gt;
+      &lt;small v-if=&#34;errors.kelas&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.kelas }}&lt;/small&gt;&lt;br /&gt;
 
       &lt;label for=&#34;jenisKelamin&#34;&gt;Jenis Kelamin&lt;/label&gt;
       &lt;select id=&#34;jenisKelamin&#34; v-model=&#34;jenis_kelamin&#34;&gt;
@@ -145,15 +142,11 @@ async function submitForm() {
         &lt;option value=&#34;Laki-Laki&#34;&gt;Laki-Laki&lt;/option&gt;
         &lt;option value=&#34;Perempuan&#34;&gt;Perempuan&lt;/option&gt;
       &lt;/select&gt;
-      &lt;small v-if=&#34;errors.jenisKelamin&#34; style=&#34;color: red&#34;&gt;&#123;&#123;
-        errors.jenisKelamin
-      }}&lt;/small
-      &gt;&lt;br /&gt;
+      &lt;small v-if=&#34;errors.jenisKelamin&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.jenisKelamin }}&lt;/small&gt;&lt;br /&gt;
 
       &lt;label for=&#34;alamat&#34;&gt;Alamat&lt;/label&gt;
       &lt;textarea id=&#34;alamat&#34; v-model=&#34;alamat&#34;&gt;&lt;/textarea&gt;
-      &lt;small v-if=&#34;errors.alamat&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.alamat }}&lt;/small
-      &gt;&lt;br /&gt;
+      &lt;small v-if=&#34;errors.alamat&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.alamat }}&lt;/small&gt;&lt;br /&gt;
 
       &lt;button type=&#34;submit&#34;&gt;Simpan&lt;/button&gt;
     &lt;/form&gt;
@@ -169,9 +162,11 @@ async function submitForm() {
 <pre><code language="language-ts" class="language-ts">import { createApp } from &#34;vue&#34;;
 import &#34;./style.css&#34;;
 import App from &#34;./App.vue&#34;;
-import router from &#34;./router&#34;;
+import router from &#34;./router&#34;; 
 
-createApp(App).use(router).mount(&#34;#app&#34;);
+createApp(App)
+  .use(router) 
+  .mount(&#34;#app&#34;);
 </code></pre>
 
 
