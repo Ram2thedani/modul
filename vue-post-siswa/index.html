@@ -26,7 +26,7 @@
                   id="vue-post-siswa"
                   title="Vue 3 - Menyimpan Data dengan Method POST"
                   environment="web"
-                  feedback-link="https://github.com/">
+                  feedback-link="https://github.com/username/repo/issues">
     
       <google-codelab-step label="Step 1 - Persiapan" duration="0">
         <p>Setelah sebelumnya kita berhasil membuat fungsi untuk menampilkan data dari API siswa lewat <strong>GET</strong>, sekarang kita akan melanjutkan progress untuk membuat fungsi menyimpan data lewat method <strong>POST</strong>.</p>
@@ -131,11 +131,13 @@ async function submitForm() {
     &lt;form @submit.prevent=&#34;submitForm&#34;&gt;
       &lt;label for=&#34;nama&#34;&gt;Nama&lt;/label&gt;
       &lt;input id=&#34;nama&#34; v-model=&#34;nama&#34; type=&#34;text&#34; /&gt;
-      &lt;small v-if=&#34;errors.nama&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.nama }}&lt;/small&gt;&lt;br /&gt;
+      &lt;small v-if=&#34;errors.nama&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.nama }}&lt;/small
+      &gt;&lt;br /&gt;
 
       &lt;label for=&#34;kelas&#34;&gt;Kelas&lt;/label&gt;
       &lt;input id=&#34;kelas&#34; v-model=&#34;kelas&#34; type=&#34;text&#34; /&gt;
-      &lt;small v-if=&#34;errors.kelas&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.kelas }}&lt;/small&gt;&lt;br /&gt;
+      &lt;small v-if=&#34;errors.kelas&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.kelas }}&lt;/small
+      &gt;&lt;br /&gt;
 
       &lt;label for=&#34;jenisKelamin&#34;&gt;Jenis Kelamin&lt;/label&gt;
       &lt;select id=&#34;jenisKelamin&#34; v-model=&#34;jenis_kelamin&#34;&gt;
@@ -143,11 +145,15 @@ async function submitForm() {
         &lt;option value=&#34;Laki-Laki&#34;&gt;Laki-Laki&lt;/option&gt;
         &lt;option value=&#34;Perempuan&#34;&gt;Perempuan&lt;/option&gt;
       &lt;/select&gt;
-      &lt;small v-if=&#34;errors.jenisKelamin&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.jenisKelamin }}&lt;/small&gt;&lt;br /&gt;
+      &lt;small v-if=&#34;errors.jenisKelamin&#34; style=&#34;color: red&#34;&gt;&#123;&#123;
+        errors.jenisKelamin
+      }}&lt;/small
+      &gt;&lt;br /&gt;
 
       &lt;label for=&#34;alamat&#34;&gt;Alamat&lt;/label&gt;
       &lt;textarea id=&#34;alamat&#34; v-model=&#34;alamat&#34;&gt;&lt;/textarea&gt;
-      &lt;small v-if=&#34;errors.alamat&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.alamat }}&lt;/small&gt;&lt;br /&gt;
+      &lt;small v-if=&#34;errors.alamat&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.alamat }}&lt;/small
+      &gt;&lt;br /&gt;
 
       &lt;button type=&#34;submit&#34;&gt;Simpan&lt;/button&gt;
     &lt;/form&gt;
@@ -165,9 +171,7 @@ import &#34;./style.css&#34;;
 import App from &#34;./App.vue&#34;;
 import router from &#34;./router&#34;;
 
-createApp(App)
-  .use(router)
-  .mount(&#34;#app&#34;);
+createApp(App).use(router).mount(&#34;#app&#34;);
 </code></pre>
 
 

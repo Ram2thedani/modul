@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2025-09-12T16:10:48+07:00",
+  "updated": "2025-09-13T08:13:29+07:00",
   "id": "vue-post-siswa",
   "duration": 0,
   "title": "Vue 3 - Menyimpan Data dengan Method POST",
@@ -19,12 +19,7 @@
     "typescript",
     "crud"
   ],
-  "tags": [
-    "api",
-    "crud",
-    "typescript",
-    "vue"
-  ],
-  "feedback": "https://github.com/",
+  "tags": [],
+  "feedback": "https://github.com/username/repo/issues",
   "url": "vue-post-siswa"
 }
