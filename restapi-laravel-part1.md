@@ -11,7 +11,7 @@ Panduan ini menjelaskan langkah demi langkah pengenalan Laravel, persiapan proje
 
 ## Step 1 — Pengenalan Laravel
 
-Bayangkan kita ingin membangun sebuah rumah. Tanpa alat, kita harus membuat semuanya dari nol—menyiapkan pondasi, memotong kayu, menyusun bata, hingga merancang kabel listrik sendiri. Pekerjaan itu tentu sangat memakan waktu dan rawan kesalahan.
+&nbsp;&nbsp;&nbsp;&nbsp;Bayangkan kita ingin membangun sebuah rumah. Tanpa alat, kita harus membuat semuanya dari nol—menyiapkan pondasi, memotong kayu, menyusun bata, hingga merancang kabel listrik sendiri. Pekerjaan itu tentu sangat memakan waktu dan rawan kesalahan.
 
 Begitu pula dalam dunia pemrograman web. Jika kita membangun aplikasi dari nol hanya dengan PHP murni, maka kita harus memikirkan semua detail kecil: bagaimana menangani request dari pengguna, mengatur database, membuat sistem keamanan, hingga mengelola tampilan. Proses ini bisa membuat kita kewalahan.
 
@@ -96,23 +96,18 @@ php artisan serve
 3. Klik link yang disediakan.
 
 > Catatan: Saat pertama kali menjalankan biasanya muncul error karena database belum dikonfigurasi.
+> <br>
 
----
+![SS sqlite](restapi-laravel-part1/img/sqliteerror.png)
 
 ## Step 6 — Konfigurasi Database
 
 1. Buat database baru di **phpMyAdmin**.
 2. Buka file `.env` di VSCode.
-3. Ubah bagian konfigurasi database menjadi:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=nama_database_anda
-DB_USERNAME=root
-DB_PASSWORD=
-```
+3. Ubah bagian konfigurasi database menjadi: <br>
+   ![SS env](restapi-laravel-part1/img/env.png)
 
 4. Simpan file `.env`.
 5. Refresh halaman web. Jika aplikasi tampil normal, berarti Laravel siap digunakan.
+   <br>
+   ![SS laravel12](restapi-laravel-part1/img/laravel12.png)

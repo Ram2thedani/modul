@@ -29,7 +29,7 @@
                   feedback-link="https://github.com/username/repo/issues">
     
       <google-codelab-step label="Step 1 — Pengenalan Laravel" duration="0">
-        <p>Bayangkan kita ingin membangun sebuah rumah. Tanpa alat, kita harus membuat semuanya dari nol—menyiapkan pondasi, memotong kayu, menyusun bata, hingga merancang kabel listrik sendiri. Pekerjaan itu tentu sangat memakan waktu dan rawan kesalahan.</p>
+        <p>    Bayangkan kita ingin membangun sebuah rumah. Tanpa alat, kita harus membuat semuanya dari nol—menyiapkan pondasi, memotong kayu, menyusun bata, hingga merancang kabel listrik sendiri. Pekerjaan itu tentu sangat memakan waktu dan rawan kesalahan.</p>
 <p>Begitu pula dalam dunia pemrograman web. Jika kita membangun aplikasi dari nol hanya dengan PHP murni, maka kita harus memikirkan semua detail kecil: bagaimana menangani request dari pengguna, mengatur database, membuat sistem keamanan, hingga mengelola tampilan. Proses ini bisa membuat kita kewalahan.</p>
 <p>Di sinilah <strong>Laravel</strong> hadir. Laravel adalah framework backend berbasis PHP yang menyediakan &#34;kerangka kerja&#34; siap pakai untuk mempercepat dan memudahkan proses pengembangan aplikasi web. Framework ini ibarat peralatan modern dalam membangun rumah: ada cetakan pondasi, alat ukur, hingga sistem kelistrikan standar. Kita tidak perlu lagi merancang semuanya dari awal, cukup mengikuti pola yang sudah terbukti aman dan efisien.</p>
 <p>Peran Laravel sebagai framework backend sangat penting. Ia bertugas mengelola logika di balik layar—bagian yang tidak langsung terlihat oleh pengguna. Mulai dari mengatur bagaimana data disimpan dan diambil dari database, mengatur alur request dan response, memastikan keamanan melalui autentikasi, hingga menyediakan API yang bisa diakses oleh aplikasi lain.</p>
@@ -97,7 +97,8 @@
 <ol type="1" start="3">
 <li>Klik link yang disediakan.</li>
 </ol>
-<p>Catatan: Saat pertama kali menjalankan biasanya muncul error karena database belum dikonfigurasi.</p>
+<p>Catatan: Saat pertama kali menjalankan biasanya muncul error karena database belum dikonfigurasi. <br></p>
+<p class="image-container"><img alt="SS sqlite" src="img\\13710c586c67a5d2.png"></p>
 
 
       </google-codelab-step>
@@ -106,18 +107,9 @@
         <ol type="1">
 <li>Buat database baru di <strong>phpMyAdmin</strong>.</li>
 <li>Buka file <code>.env</code> di VSCode.</li>
-<li>Ubah bagian konfigurasi database menjadi:</li>
-</ol>
-<pre><code language="language-env" class="language-env">DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=nama_database_anda
-DB_USERNAME=root
-DB_PASSWORD=
-</code></pre>
-<ol type="1" start="4">
+<li>Ubah bagian konfigurasi database menjadi: <br><img alt="SS env" src="img\\36f56aa1c2041561.png"></li>
 <li>Simpan file <code>.env</code>.</li>
-<li>Refresh halaman web. Jika aplikasi tampil normal, berarti Laravel siap digunakan.</li>
+<li>Refresh halaman web. Jika aplikasi tampil normal, berarti Laravel siap digunakan. <br><img alt="SS laravel12" src="img\\2803a773983b7c2a.png"></li>
 </ol>
 
 
