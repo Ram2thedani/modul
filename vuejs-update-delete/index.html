@@ -1,0 +1,273 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Membuat Fungsi Update dan Delete di Vue.js</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="vuejs-update-delete"
+                  title="Membuat Fungsi Update dan Delete di Vue.js"
+                  environment="web"
+                  feedback-link="https://github.com/username/repo/issues">
+    
+      <google-codelab-step label="Step 1 — Membuat Fungsi Update" duration="0">
+        <p>Setelah sebelumnya selesai membuat fungsi tambah, kali ini kita akan membuat fungsi untuk mengupdate dan menghapus data. Pertama-tama kita akan fokus dengan fungsi <strong>update</strong> terlebih dahulu.</p>
+<p>Buka file <code>siswaService.ts</code> kemudian tambahkan code berikut di bawah kurung kurawal penutup <code>storeSiswa</code>:</p>
+<pre><code language="language-ts" class="language-ts">export async function getSiswaById(id: number): Promise&lt;Siswa | undefined&gt; {
+  const res = await fetch(`${API_URL}/${id}`);
+  const body = await res.json();
+  console.log(&#34;getSiswaById response:&#34;, body);
+  return body as Siswa;
+}
+
+export async function updateSiswa(
+  id: number,
+  payload: Omit&lt;Siswa, &#34;id&#34;&gt;
+): Promise&lt;Siswa&gt; {
+  const res = await fetch(`${API_URL}/${id}`, {
+    method: &#34;PUT&#34;,
+    headers: {
+      &#34;Content-Type&#34;: &#34;application/json&#34;,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error(&#34;Gagal mengupdate data siswa&#34;);
+  }
+
+  const body = await res.json();
+  return body.data;
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2 — Membuat View EditSiswa" duration="0">
+        <p>Di dalam folder <code>views</code> buat file baru bernama <code>EditSiswa.vue</code> kemudian ketikkan code berikut:</p>
+<pre><code language="language-vue" class="language-vue">&lt;script setup lang=&#34;ts&#34;&gt;
+import { ref, onMounted } from &#34;vue&#34;;
+import { useRouter, useRoute } from &#34;vue-router&#34;;
+import { getSiswaById, updateSiswa } from &#34;../services/siswaService&#34;;
+
+const router = useRouter();
+const route = useRoute();
+
+const nama = ref(&#34;&#34;);
+const kelas = ref(&#34;&#34;);
+const jenis_kelamin = ref(&#34;&#34;);
+const alamat = ref(&#34;&#34;);
+
+const errors = ref&lt;{ [key: string]: string }&gt;({});
+
+const id = Number(route.params.id);
+
+function validateForm() {
+  errors.value = {};
+
+  if (!nama.value) errors.value.nama = &#34;Nama wajib diisi&#34;;
+  if (!kelas.value) errors.value.kelas = &#34;Kelas wajib diisi&#34;;
+  if (!jenis_kelamin.value) errors.value.jenisKelamin = &#34;Pilih jenis kelamin&#34;;
+  if (!alamat.value) errors.value.alamat = &#34;Alamat wajib diisi&#34;;
+
+  return Object.keys(errors.value).length === 0;
+}
+
+async function submitForm() {
+  if (validateForm()) {
+    await updateSiswa(id, {
+      nama: nama.value,
+      kelas: kelas.value,
+      jenis_kelamin: jenis_kelamin.value,
+      alamat: alamat.value,
+    });
+    router.push(&#34;/&#34;);
+  }
+}
+
+onMounted(async () =&gt; {
+  const siswa = await getSiswaById(id);
+  console.log(&#34;Fetched siswa:&#34;, siswa); // Debug line
+  if (siswa) {
+    nama.value = siswa.nama ?? &#34;&#34;;
+    kelas.value = siswa.kelas ?? &#34;&#34;;
+    jenis_kelamin.value = siswa.jenis_kelamin ?? &#34;&#34;;
+    alamat.value = siswa.alamat ?? &#34;&#34;;
+  }
+});
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;h1&gt;Edit Siswa&lt;/h1&gt;
+  &lt;div class=&#34;form-container&#34;&gt;
+    &lt;form @submit.prevent=&#34;submitForm&#34;&gt;
+      &lt;label for=&#34;nama&#34;&gt;Nama&lt;/label&gt;
+      &lt;input id=&#34;nama&#34; v-model=&#34;nama&#34; type=&#34;text&#34; /&gt;
+      &lt;small v-if=&#34;errors.nama&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.nama }}&lt;/small
+      &gt;&lt;br /&gt;
+
+      &lt;label for=&#34;kelas&#34;&gt;Kelas&lt;/label&gt;
+      &lt;input id=&#34;kelas&#34; v-model=&#34;kelas&#34; type=&#34;text&#34; /&gt;
+      &lt;small v-if=&#34;errors.kelas&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.kelas }}&lt;/small
+      &gt;&lt;br /&gt;
+
+      &lt;label for=&#34;jenisKelamin&#34;&gt;Jenis Kelamin&lt;/label&gt;
+      &lt;select id=&#34;jenisKelamin&#34; v-model=&#34;jenis_kelamin&#34;&gt;
+        &lt;option value=&#34;&#34;&gt;Pilih&lt;/option&gt;
+        &lt;option value=&#34;Laki-Laki&#34;&gt;Laki-Laki&lt;/option&gt;
+        &lt;option value=&#34;Perempuan&#34;&gt;Perempuan&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;small v-if=&#34;errors.jenisKelamin&#34; style=&#34;color: red&#34;&gt;&#123;&#123;
+        errors.jenisKelamin
+      }}&lt;/small
+      &gt;&lt;br /&gt;
+
+      &lt;label for=&#34;alamat&#34;&gt;Alamat&lt;/label&gt;
+      &lt;textarea id=&#34;alamat&#34; v-model=&#34;alamat&#34;&gt;&lt;/textarea&gt;
+      &lt;small v-if=&#34;errors.alamat&#34; style=&#34;color: red&#34;&gt;&#123;&#123; errors.alamat }}&lt;/small
+      &gt;&lt;br /&gt;
+
+      &lt;button type=&#34;submit&#34;&gt;Simpan Perubahan&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3 — Mendaftarkan Route" duration="0">
+        <p>Buka file <code>router/index.ts</code> kemudian tambahkan import:</p>
+<pre><code language="language-ts" class="language-ts">import EditSiswa from &#34;../views/EditSiswa.vue&#34;;
+</code></pre>
+<p>Tambahkan route berikut:</p>
+<pre><code language="language-ts" class="language-ts">{ path: &#34;/edit/:id&#34;, name: &#34;EditSiswa&#34;, component: EditSiswa },
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4 — Membuat Tombol Edit" duration="0">
+        <p>Di dalam <code>HomeView.vue</code> tambahkan import:</p>
+<pre><code language="language-ts" class="language-ts">import router from &#34;../router&#34;;
+</code></pre>
+<p>Kemudian tambahkan code berikut di bawah tag P alamat:</p>
+<pre><code language="language-vue" class="language-vue">&lt;div class=&#34;actions&#34;&gt;
+  &lt;button class=&#34;btn btn-yellow&#34; @click=&#34;router.push(`/edit/${siswa.id}`)&#34;&gt;Edit&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Tambahkan style di bagian paling bawah file:</p>
+<pre><code language="language-vue" class="language-vue">&lt;style scoped&gt;
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-green {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-yellow {
+  background: #fbc02d;
+  color: black;
+}
+
+.btn-red {
+  background: #e53935;
+  color: white;
+}
+&lt;/style&gt;
+</code></pre>
+<p>Setelah itu jalankan aplikasi untuk mengetes.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5 — Membuat Fungsi Hapus" duration="0">
+        <p>Setelah berhasil membuat edit, sekarang kita akan membuat fungsi hapus.<br> Buka file <code>siswaService.ts</code> kemudian tambahkan code berikut di bawah kurung kurawal penutup <code>updateSiswa</code>:</p>
+<pre><code language="language-ts" class="language-ts">export async function deleteSiswa(id: number): Promise&lt;void&gt; {
+  const res = await fetch(`${API_URL}/${id}`, {
+    method: &#34;DELETE&#34;,
+  });
+
+  if (!res.ok) {
+    throw new Error(&#34;Gagal menghapus data siswa&#34;);
+  }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6 — Membuat Tombol Hapus" duration="0">
+        <ol type="1">
+<li>Buka file <code>HomeView.vue</code>.</li>
+<li>Ubah pada bagian import menjadi:</li>
+</ol>
+<pre><code language="language-ts" class="language-ts">import { getAllSiswa, deleteSiswa } from &#34;../services/siswaService&#34;;
+</code></pre>
+<ol type="1" start="3">
+<li>Ubah juga bagian ini: <br><img alt="SS Onmounted" src="img\\b3188e20fac4aec7.png"><br><br> menjadi:<br></li>
+</ol>
+<pre><code language="language-ts" class="language-ts">async function loadData() {
+  siswaList.value = await getAllSiswa();
+}
+
+onMounted(loadData);
+
+async function handleDelete(id: number) {
+  if (confirm(&#34;Yakin ingin menghapus siswa ini?&#34;)) {
+    await deleteSiswa(id);
+    await loadData();
+  }
+}
+</code></pre>
+<ol type="1" start="4">
+<li>Terakhir, tambahkan button hapus di bawah button edit:</li>
+</ol>
+<pre><code language="language-vue" class="language-vue">&lt;button class=&#34;btn btn-red&#34; @click=&#34;handleDelete(siswa.id)&#34;&gt;Hapus&lt;/button&gt;
+</code></pre>
+<p>Sekarang jalankan aplikasi untuk mengetes hasilnya.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

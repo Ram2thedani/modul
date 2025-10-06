@@ -1,0 +1,135 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Rest API dengan Laravel Part 1</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="restapi-laravel-part1"
+                  title="Rest API dengan Laravel Part 1"
+                  environment="web"
+                  feedback-link="https://github.com/username/repo/issues">
+    
+      <google-codelab-step label="Step 1 — Pengenalan Laravel" duration="0">
+        <p>Bayangkan kita ingin membangun sebuah rumah. Tanpa alat, kita harus membuat semuanya dari nol—menyiapkan pondasi, memotong kayu, menyusun bata, hingga merancang kabel listrik sendiri. Pekerjaan itu tentu sangat memakan waktu dan rawan kesalahan.</p>
+<p>Begitu pula dalam dunia pemrograman web. Jika kita membangun aplikasi dari nol hanya dengan PHP murni, maka kita harus memikirkan semua detail kecil: bagaimana menangani request dari pengguna, mengatur database, membuat sistem keamanan, hingga mengelola tampilan. Proses ini bisa membuat kita kewalahan.</p>
+<p>Di sinilah <strong>Laravel</strong> hadir. Laravel adalah framework backend berbasis PHP yang menyediakan &#34;kerangka kerja&#34; siap pakai untuk mempercepat dan memudahkan proses pengembangan aplikasi web. Framework ini ibarat peralatan modern dalam membangun rumah: ada cetakan pondasi, alat ukur, hingga sistem kelistrikan standar. Kita tidak perlu lagi merancang semuanya dari awal, cukup mengikuti pola yang sudah terbukti aman dan efisien.</p>
+<p>Peran Laravel sebagai framework backend sangat penting. Ia bertugas mengelola logika di balik layar—bagian yang tidak langsung terlihat oleh pengguna. Mulai dari mengatur bagaimana data disimpan dan diambil dari database, mengatur alur request dan response, memastikan keamanan melalui autentikasi, hingga menyediakan API yang bisa diakses oleh aplikasi lain.</p>
+<p>Selain itu, Laravel juga terkenal dengan sintaks yang elegan dan mudah dibaca. Fitur-fiturnya seperti <strong>Routing, Eloquent ORM, Middleware, dan Blade Templating Engine</strong> membuat pengembangan lebih terstruktur dan rapi.</p>
+<p>Dengan memahami Laravel, mahasiswa atau siswa tidak hanya belajar bagaimana menulis kode, tetapi juga bagaimana membangun aplikasi dengan pola pikir seorang arsitek perangkat lunak—membangun sesuatu yang kuat, teratur, dan berkelanjutan.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2 — Persiapan Project" duration="0">
+        <p>Untuk memulai project Laravel, ada beberapa aplikasi yang harus diinstall, di antaranya:</p>
+<ul>
+<li><a href="https://github.com/leokhoa/laragon/releases/download/6.0.0/laragon-wamp.exe" target="_blank">Laragon</a></li>
+<li><a href="https://getcomposer.org/Composer-Setup.exe" target="_blank">Composer</a></li>
+<li><a href="https://github.com/git-for-windows/git/releases/download/v2.51.0.windows.2/Git-2.51.0.2-64-bit.exe" target="_blank">Git</a></li>
+<li><a href="https://windows.php.net/downloads/releases/php-8.2.29-nts-Win32-vs16-x64.zip" target="_blank">PHP (minimal versi 8.2)</a></li>
+</ul>
+<p>Untuk cara install masing-masing aplikasi bisa mengikuti tutorial (link menyusul).</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3 — Membuat Project" duration="0">
+        <p>Jika semua aplikasi sudah terinstall, buka direktori/folder untuk menyimpan project.</p>
+<ol type="1">
+<li>Klik <strong>address bar</strong> atau tekan <code>F4</code> → ketik <code>cmd</code> → tekan <code>Enter</code>.</li>
+<li>Jalankan perintah berikut:</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">composer create-project laravel/laravel nama_project
+</code></pre>
+<ol type="1" start="3">
+<li>Setelah download selesai, masuk ke folder project:</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">cd nama_project
+</code></pre>
+<ol type="1" start="4">
+<li>Buka dengan Visual Studio Code:</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">code .
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4 — Struktur Folder" duration="0">
+        <p>Laravel memiliki beberapa direktori penting:</p>
+<ol type="1">
+<li><strong>app/Http/Controllers<br></strong> Tempat logika utama aplikasi disimpan. Controller adalah penghubung antara Model (data) dan View (tampilan).</li>
+<li><strong>app/Models<br></strong> Berhubungan langsung dengan database menggunakan Eloquent ORM. Model ibarat aktor yang membawa data nyata ke dalam aplikasi.</li>
+<li><strong>resources/views<br></strong> Menyimpan file tampilan (view). Laravel menggunakan <strong>Blade Templating Engine</strong> untuk menulis HTML yang dinamis.</li>
+<li><strong>routes<br></strong> Tempat mendefinisikan URL aplikasi dan logika yang dijalankan. Contoh: URL <code>/siswa</code> diarahkan ke <code>SiswaController@index</code>.</li>
+<li><strong>File .env<br></strong> Menyimpan konfigurasi rahasia seperti nama database, username, password, dan port. File ini biasanya tidak diunggah ke repository publik.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5 — Mengetes Aplikasi" duration="0">
+        <ol type="1">
+<li>Jalankan service di <strong>Laragon</strong> (klik <em>Start All</em>).</li>
+<li>Di terminal, jalankan:</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">php artisan serve
+</code></pre>
+<ol type="1" start="3">
+<li>Klik link yang disediakan.</li>
+</ol>
+<p>Catatan: Saat pertama kali menjalankan biasanya muncul error karena database belum dikonfigurasi.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6 — Konfigurasi Database" duration="0">
+        <ol type="1">
+<li>Buat database baru di <strong>phpMyAdmin</strong>.</li>
+<li>Buka file <code>.env</code> di VSCode.</li>
+<li>Ubah bagian konfigurasi database menjadi:</li>
+</ol>
+<pre><code language="language-env" class="language-env">DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database_anda
+DB_USERNAME=root
+DB_PASSWORD=
+</code></pre>
+<ol type="1" start="4">
+<li>Simpan file <code>.env</code>.</li>
+<li>Refresh halaman web. Jika aplikasi tampil normal, berarti Laravel siap digunakan.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

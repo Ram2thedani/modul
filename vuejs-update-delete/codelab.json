@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-10-06T09:17:29+07:00",
+  "id": "vuejs-update-delete",
+  "duration": 0,
+  "title": "Membuat Fungsi Update dan Delete di Vue.js",
+  "authors": "Ramdani",
+  "summary": "Membuat fungsi Update dan Delete di Vue.js",
+  "source": "vuejs-update-delete.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "vue",
+    "typescript",
+    "frontend"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/username/repo/issues",
+  "url": "vuejs-update-delete"
+}
