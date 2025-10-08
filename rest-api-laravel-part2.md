@@ -8,7 +8,7 @@ Feedback Link: https://github.com/username/repo/issues
 ## Step1: Membuat table
 
 Setelah setup project Laravel dipastikan selesai, buatlah tabel-tabel yang dibutuhkan di PhpMyAdmin.  
-Contohnya dalam studi kasus `db_perpustakaan` kita buat table bernama **buku** sebagai berikut:  
+Contohnya dalam studi kasus `db_perpustakaan` kita buat table bernama **buku** sebagai berikut: <br><br>
 ![ss tabel](restapi-laravel-part2/img/tabel.png)<br>
 
 **Keterangan:**  
