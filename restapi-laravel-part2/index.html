@@ -1,0 +1,128 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="restapi-laravel-part2"
+                  title="Rest API dengan Laravel Part 2"
+                  environment="web"
+                  feedback-link="https://github.com/username/repo/issues">
+    
+      <google-codelab-step label="Step1: Membuat table" duration="0">
+        <p>Setelah setup project Laravel dipastikan selesai, buatlah tabel-tabel yang dibutuhkan di PhpMyAdmin.<br> Contohnya dalam studi kasus <code>db_perpustakaan</code> kita buat table bernama <strong>buku</strong> sebagai berikut:<br><img alt="ss tabel" src="img\\c051cd831a7c008f.png"><br></p>
+<p><strong>Keterangan:<br></strong> Tabel wajib memiliki kolom <code>id</code>, <code>created_at</code>, dan <code>updated_at</code>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step2: Membuat Model" duration="0">
+        <p>Seperti yang sudah dipelajari sebelumnya, untuk memetakan/memodelkan data kita membutuhkan model.<br> Untuk membuat model di Laravel cukup menggunakan terminal dan ketikkan:</p>
+<pre><code language="language-bash" class="language-bash">php artisan make:model Namamodel
+</code></pre>
+<p><strong>Penting:</strong> Nama model harus diawali dengan huruf kapital, contoh: <code>Buku</code></p>
+<p>Jika berhasil, model yang dibuat akan berada di folder <code>app/Models</code>.</p>
+<p>Di dalam class isikan kode sebagai berikut:<br><img alt="SS model" src="img\\e5e5afae3c5858c7.png"><br></p>
+<p><strong>Keterangan:</strong></p>
+<ul>
+<li>Bagian <code>protected $table = 'namatabel';</code> berfungsi untuk menghubungkan ke tabel dari MySQL.</li>
+<li>Bagian <code>protected $fillable = ['kolom1', 'kolom2'];</code> berfungsi untuk mendaftarkan atribut (nama kolom) yang bisa kita isi ketika melakukan insert atau update ke database.<br> Kolom <code>id</code>, <code>created_at</code>, dan <code>updated_at</code> <strong>tidak perlu dimasukkan</strong> karena ketiga kolom tersebut akan terisi otomatis.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step3: Install API" duration="0">
+        <p>Untuk menginstall layanan API di Laravel, buka terminal kemudian ketikkan:</p>
+<pre><code language="language-bash" class="language-bash">php artisan install:api
+</code></pre>
+<p>Tunggu beberapa saat. Jika ada pertanyaan tentang pending migration, ketikkan <strong>no</strong> kemudian tekan <strong>Enter</strong>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step4: Membuat Controller" duration="0">
+        <p>Sebelumnya kita sudah mempelajari service di Vue.js. Di Laravel, <strong>controller</strong> berfungsi kurang lebih sama dengan service.<br> Controller berisi logika-logika untuk menyusun suatu fungsi dalam aplikasi, seperti proses <strong>CRUD (Create, Read, Update, Delete)</strong>.</p>
+<p>Untuk membuat controller di Laravel, buka terminal kemudian ketik:</p>
+<pre><code language="language-bash" class="language-bash">php artisan make:controller api/NamaController --api
+</code></pre>
+<p><strong>Penting:</strong> Pastikan nama controller diawali dengan huruf kapital dan diakhiri dengan <em>Controller</em>, contoh: <code>BukuController</code></p>
+<p>Jika berhasil dibuat, controller akan berada di folder <code>app/Http/Controllers/api</code>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step5: Membuat Operasi CRUD (Create, Read, Update, Delete)" duration="0">
+        <p>Buka controller yang tadi dibuat, kemudian pada bagian atas tambahkan import model dengan kata kunci <code>use</code>:</p>
+<pre><code language="language-php" class="language-php">use App\Models\Namamodel;
+</code></pre>
+<h2 is-upgraded>1. Function index</h2>
+<p class="image-container"><img alt="SS index" src="img\\5136042348436250.png"></p>
+<h2 is-upgraded>2. Function store</h2>
+<p class="image-container"><img alt="SS store" src="img\\4b6572900c5e8ea3.png"></p>
+<h2 is-upgraded>3. Function show</h2>
+<p class="image-container"><img alt="SS show" src="img\\ba83cb8d66efac4b.png"></p>
+<h2 is-upgraded>4. Function update</h2>
+<p class="image-container"><img alt="SS update" src="img\\38952ff7f6f7360.png"></p>
+<h2 is-upgraded>5. Function destroy</h2>
+<p class="image-container"><img alt="SS destroy" src="img\\da6543ff10f40164.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step6: Membuat Route" duration="0">
+        <p>Di Laravel, <strong>route (rute)</strong> adalah mekanisme untuk memetakan URL (alamat web) dengan fungsi atau logika tertentu, seperti menampilkan view, memanggil controller, atau mengembalikan respons API.<br> Route berada di folder <code>routes</code>.</p>
+<p>Karena saat ini kita bertujuan untuk membuat <strong>backend API</strong>, maka yang digunakan adalah file <code>api.php</code>.</p>
+<p>Lakukan import controller dengan kata kunci <code>use</code> di bagian atas file:</p>
+<pre><code language="language-php" class="language-php">use App\Http\Controllers\api\NamaController;
+</code></pre>
+<p>Tambahkan kode berikut di bagian bawah file:<br><img alt="SS route" src="img\\71da212ea705e5cd.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step7: Mengetes Aplikasi" duration="0">
+        <ol type="1">
+<li>Jalankan server Laravel dengan perintah:</li>
+</ol>
+<pre><code language="language-bash" class="language-bash">php artisan serve
+</code></pre>
+<ol type="1" start="2">
+<li>Buka <strong>Postman</strong> kemudian isikan header sebagai berikut:<br><img alt="SS header" src="img\\835ee96d23286d2b.png"></li>
+<li>Masukkan URL berikut dan uji satu per satu menggunakan method <strong>GET</strong>, <strong>POST</strong>, <strong>PUT/PATCH</strong>, dan <strong>DELETE</strong>:</li>
+</ol>
+<pre><code>localhost:8000/api/buku
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

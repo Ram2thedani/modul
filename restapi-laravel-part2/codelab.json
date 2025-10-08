@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-10-08T11:01:59+07:00",
+  "id": "restapi-laravel-part2",
+  "duration": 0,
+  "title": "",
+  "authors": "Ramdani",
+  "summary": "Belajar Rest API dengan Laravel Part 2",
+  "source": "rest-api-laravel-part2.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "laravel",
+    "php",
+    "backend"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/username/repo/issues",
+  "url": "restapi-laravel-part2"
+}
