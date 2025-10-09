@@ -1,0 +1,95 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Instalasi Environment Laravel</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="instalasi-environment-laravel"
+                  title="Instalasi Environment Laravel"
+                  environment="web"
+                  feedback-link="https://github.com/username/repo/issues">
+    
+      <google-codelab-step label="Step 1 — Mendownload Aplikasi" duration="0">
+        <p>Download semua aplikasi yang ada di <a href="https://ram2thedani.github.io/modul/restapi-laravel-part1/#1" target="_blank">list aplikasi yang dibutuhkan</a>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2 — Menginstall Laragon" duration="0">
+        <ol type="1">
+<li>Setelah Laragon berhasil didownload, <strong>double klik</strong> file <code>laragon-wamp.exe</code> kemudian pilih <em>English</em> untuk bahasanya.</li>
+<li>Jika muncul pop-up seperti berikut:<br><img alt="ss laragon1" src="img\\5574df8cccaa2cb7.png"><br> Klik <strong>Next/Install</strong> sampai muncul proses install.</li>
+<li>Tunggu sampai proses install selesai.</li>
+<li>Setelah proses install selesai, download <strong>PHP 8.2</strong>, lalu extract.<br><img alt="ss php1" src="img\\94f7481026512949.png"><br></li>
+<li>Copy folder hasil extract PHP ke <code>C:\Laragon\bin\php</code>, lalu paste di sana.<br><img alt="ss php2" src="img\\dc382d03b68f4a3c.png"></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3 — Setting Laragon" duration="0">
+        <ol type="1">
+<li>Jalankan Laragon kemudian klik <strong>Menu &gt; PHP &gt; Version</strong>, pilih versi <strong>8.2</strong>.<br><br><img alt="ss laragon2" src="img\\8119b58200d059f0.png"><br></li>
+<li>Aktifkan ekstensi <strong>zip</strong> dengan cara klik <strong>Menu &gt; PHP &gt; Extension &gt; zip</strong>.<br><br><img alt="ss laragon3" src="img\\41abb0b3494f6d33.png"><br></li>
+<li>Install <strong>phpMyAdmin</strong> dengan cara klik <strong>Menu &gt; Tools &gt; Quick Add &gt; phpMyAdmin</strong>, kemudian tunggu sampai selesai.<br><br><img alt="ss laragon4" src="img\\3570071fcd9ad14d.png"><br></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4 — Menginstall Composer" duration="0">
+        <ol type="1">
+<li>Setelah Composer berhasil didownload, <strong>double klik</strong> pada file <code>composer-setup.exe</code>, klik <strong>Install for all users (recommended)</strong>.<br><br><img alt="ss composer1" src="img\\1371bda77ea83863.png"><br></li>
+<li>Jika muncul pertanyaan tentang <em>developer mode</em>, silakan klik <strong>Next</strong> saja (tidak mencentang opsi apapun).</li>
+<li>Di bagian PHP, klik <strong>Browse</strong> kemudian arahkan ke: <pre><code>C:\Laragon\bin\php\php-8.2.26-nts-Win32-vs16-x64\php.exe
+</code></pre>
+<img alt="ss composer3" src="img\\ae031c85f03033a6.png"><br> Beri centang pada opsi <strong>Add this PHP to your PATH</strong> (jika ada).</li>
+<li>Klik <strong>Next</strong> sampai muncul proses instalasi, lalu tunggu sampai proses instalasi selesai.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5 — Menginstall Git" duration="0">
+        <ol type="1">
+<li><strong>Double klik</strong> pada file setup Git yang sudah didownload, kemudian klik <strong>Next</strong> sampai proses install selesai.</li>
+<li>Untuk memastikan semua sudah terinstall, buka <strong>CMD</strong> kemudian ketik: <pre><code language="language-bash" class="language-bash">git --version
+composer --version
+php --version
+</code></pre>
+Jika semua menampilkan versi masing-masing, berarti instalasi berhasil.</li>
+</ol>
+<p>🎉 Selamat! Anda telah berhasil menginstal semua komponen environment Laravel.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

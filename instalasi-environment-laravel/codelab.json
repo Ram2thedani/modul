@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-10-09T10:13:25+07:00",
+  "id": "instalasi-environment-laravel",
+  "duration": 0,
+  "title": "Instalasi Environment Laravel",
+  "authors": "Ramdani",
+  "summary": "Panduan instalasi environment Laravel dengan Laragon, Composer, dan Git.",
+  "source": "instalasi-environment-laravel.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "laravel",
+    "php",
+    "backend"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/username/repo/issues",
+  "url": "instalasi-environment-laravel"
+}
