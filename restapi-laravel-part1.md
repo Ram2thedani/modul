@@ -34,7 +34,7 @@ Untuk memulai project Laravel, ada beberapa aplikasi yang harus diinstall, di an
 - [Git](https://github.com/git-for-windows/git/releases/download/v2.51.0.windows.2/Git-2.51.0.2-64-bit.exe)
 - [PHP (minimal versi 8.2)](https://windows.php.net/downloads/releases/php-8.2.29-nts-Win32-vs16-x64.zip)
 
-Untuk cara install masing-masing aplikasi bisa mengikuti tutorial (link menyusul).
+Untuk cara install masing-masing aplikasi bisa mengikuti [tutorial menginstall aplikasi yang dibutuhkan](https://ram2thedani.github.io/modul/instalasi-environment-laravel/).
 
 ---
 
